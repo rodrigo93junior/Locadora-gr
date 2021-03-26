@@ -1,0 +1,4 @@
+C:\Users\User\Documents\Senac\obj\Debug\netcoreapp3.1\Senac.csprojAssemblyReference.cache
+C:\Users\User\Documents\Senac\obj\Debug\netcoreapp3.1\Senac.AssemblyInfoInputs.cache
+C:\Users\User\Documents\Senac\obj\Debug\netcoreapp3.1\Senac.AssemblyInfo.cs
+C:\Users\User\Documents\Senac\obj\Debug\netcoreapp3.1\Senac.csproj.CoreCompileInputs.cache
