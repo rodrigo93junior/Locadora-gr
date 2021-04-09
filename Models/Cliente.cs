@@ -15,7 +15,8 @@ namespace Model
         public string Cpf { set; get; } // C.P.F.
         public int DiasRetorno { set; get; } // Dias para Devolução
 
-        public Cliente(){
+        public Cliente()
+        {
 
         }
         public Cliente(
@@ -35,6 +36,31 @@ namespace Model
             db.Clientes.Add(this);
             db.SaveChanges();
         }
+
+        public static Cliente AtualizarClientes(
+            Cliente cliente,
+            string stringValor,
+            string stringCampo
+        )
+        {
+            int Campo = Convert.ToInt32(stringCampo);
+            switch (Campo)
+            {
+                case 1:
+                    cliente.Nome = stringValor;
+                    break;
+                case 2:
+                    cliente.Cpf = stringValor;
+                    break;
+
+        }
+            Context db = new Context();
+            db.Clientes.Update(cliente);
+            db.SaveChanges();
+            return cliente;
+        }
+
+
 
         public override string ToString()
         {
@@ -81,7 +107,7 @@ namespace Model
             return GetClientes().Count();
         }
 
-        public static void AddCliente(Cliente cliente) 
+        public static void AddCliente(Cliente cliente)
         {
             Context db = new Context();
             db.Clientes.Add(cliente);

@@ -28,11 +28,11 @@ namespace Model
             this.DataLocacao = DataLocacao;
 
             foreach (VeiculoLeve veiculo in VeiculosLeves) {
-                LocacaoVeiculoLeve locacaoVeiculoLeve = new (this, veiculo);
+                LocacaoVeiculoLeve locacaoVeiculoLeve = new  LocacaoVeiculoLeve (this, veiculo);
             }
 
             foreach (VeiculoPesado veiculo in VeiculosPesados) {
-                LocacaoVeiculoPesado locacaoVeiculoPesado = new (this, veiculo);
+                LocacaoVeiculoPesado locacaoVeiculoPesado = new  LocacaoVeiculoPesado (this, veiculo);
             }
 
             db.Locacoes.Add (this);

@@ -18,6 +18,28 @@ namespace View {
                 Console.WriteLine ($"Informações digitadas são incorretas: {e.Message}");
             }
         }
+
+        
+        public static void AtualizerClientes(){
+            Model.Cliente cliente;
+            try {
+                Console.WriteLine("insira o ID do Cliente: ");
+                string Id = Console.ReadLine();
+                cliente = Controller.Cliente.GetCliente(Convert.ToInt32(Id));
+            } catch (Exception e ) {
+                Console.WriteLine(e.Message);
+            }
+            
+            Console.WriteLine("Digite a opção desejada:");
+            Console.WriteLine(" 1 - Alterar Nome do Cliente.");
+            Console.WriteLine(" 2 - Alterar CPF do Cliente.");
+            string opcao = Console.ReadLine();
+            Console.WriteLine(" Digite a informação a ser alterada: ");
+            string informacao = Console.ReadLine();
+        }
+        public static void DeleteCliente(){
+            
+        }
         public static void ListarClientes () {            
             foreach (Model.Cliente cliente in Controller.Cliente.ListarClientes ()) {
                 Console.WriteLine ("---------------------------");
