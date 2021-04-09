@@ -10,21 +10,23 @@ namespace Model
         public int Id { set; get; }
         public string Cor { set; get; }
 
-        public VeiculoLeve() : base() {
+        public VeiculoLeve() : base()
+        {
 
         }
-        public VeiculoLeve (
+        public VeiculoLeve(
             string Marca,
             string Modelo,
             int Ano,
             double Preco,
             string Cor
-        ) : base (Marca, Modelo, Ano, Preco) {
+        ) : base(Marca, Modelo, Ano, Preco)
+        {
             //this.Id = Context.veiculosLeves.Count;
             Context db = new Context();
             this.Cor = Cor;
 
-            db.VeiculosLeves.Add (this);
+            db.VeiculosLeves.Add(this);
             db.SaveChanges();
         }
 
@@ -51,15 +53,18 @@ namespace Model
         {
             return HashCode.Combine(this.Id);
         }
-        public static IEnumerable<VeiculoLeve> GetVeiculosLeves () {
+        public static IEnumerable<VeiculoLeve> GetVeiculosLeves()
+        {
             Context db = new Context();
             return from VeiculoLeve in db.VeiculosLeves select VeiculoLeve;
         }
-        public static int GetCount() {
+        public static int GetCount()
+        {
             return GetVeiculosLeves().Count();
         }
-        
-        public static VeiculoLeve GetVeiculoLeve (int Id) {
+
+        public static VeiculoLeve GetVeiculoLeve(int Id)
+        {
             Context db = new Context();
             return (
                 from VeiculoLeve in db.VeiculosLeves

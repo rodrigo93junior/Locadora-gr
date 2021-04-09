@@ -12,7 +12,7 @@ namespace Model
         public DateTime DataLocacao { set; get; }// Data de Locação
 
         public Locacao(){
-            
+
         }
         public Locacao(
             Cliente Cliente, 

@@ -9,7 +9,8 @@ namespace Model
         public int Ano { set; get; } //Ano do Veículo
         public double Preco { set; get; } //Preço do Veículo
 
-        public Veiculo() {
+        public Veiculo()
+        {
 
         }
         protected Veiculo(

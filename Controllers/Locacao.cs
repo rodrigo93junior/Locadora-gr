@@ -11,15 +11,19 @@ namespace Controller
             string StringDataLocacao,
             List<Model.VeiculoLeve> VeiculosLeves,
             List<Model.VeiculoPesado> VeiculosPesados
-        ){
+        )
+        {
             Model.Cliente Cliente = Controller.Cliente
                 .GetCliente(Convert.ToInt32(IdCliente));
 
             DateTime DataLocacao;
 
-            try {
+            try
+            {
                 DataLocacao = Convert.ToDateTime(StringDataLocacao);
-            } catch {
+            }
+            catch
+            {
                 DataLocacao = DateTime.Now;
             }
 
@@ -28,11 +32,12 @@ namespace Controller
                 throw new Exception("Data de Locação não pode ser maior que a data atual");
             }
 
-            return new Model.Locacao (Cliente, DataLocacao, VeiculosLeves, VeiculosPesados);
+            return new Model.Locacao(Cliente, DataLocacao, VeiculosLeves, VeiculosPesados);
         }
 
-        public static IEnumerable<Model.Locacao> GetLocacoes () {
-            return Model.Locacao.GetLocacoes ();
+        public static IEnumerable<Model.Locacao> GetLocacoes()
+        {
+            return Model.Locacao.GetLocacoes();
         }
     }
 }

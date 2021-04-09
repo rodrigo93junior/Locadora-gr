@@ -5,20 +5,23 @@ using Repositorio;
 
 namespace Model
 {
-    public class LocacaoVeiculoLeve {
+    public class LocacaoVeiculoLeve
+    {
         public string Id { set; get; }
         public int IdLocacao { set; get; }
         public Locacao Locacao { set; get; }
         public int IdVeiculoLeve { set; get; }
         public VeiculoLeve VeiculoLeve { set; get; }
 
-        public LocacaoVeiculoLeve(){
+        public LocacaoVeiculoLeve()
+        {
 
         }
         public LocacaoVeiculoLeve(
             Locacao Locacao,
             VeiculoLeve VeiculoLeve
-        ) {
+        )
+        {
             Context db = new Context();
             this.Locacao = Locacao;
             this.IdLocacao = Locacao.Id;
@@ -28,19 +31,22 @@ namespace Model
             db.LocacaoVeiculosLeves.Add(this);
             db.SaveChanges();
         }
-        public static IEnumerable<LocacaoVeiculoLeve> GetVeiculos(int IdLocacao) {
+        public static IEnumerable<LocacaoVeiculoLeve> GetVeiculos(int IdLocacao)
+        {
             Context db = new Context();
             return from veiculo in db.LocacaoVeiculosLeves where veiculo.IdLocacao == IdLocacao select veiculo;
         }
-        public static double GetTotal(int IdLocacao) {
+        public static double GetTotal(int IdLocacao)
+        {
             Context db = new Context();
             return (
-                from veiculo in db.LocacaoVeiculosLeves 
-                where veiculo.IdLocacao == IdLocacao 
+                from veiculo in db.LocacaoVeiculosLeves
+                where veiculo.IdLocacao == IdLocacao
                 select veiculo.VeiculoLeve.Preco
             ).Sum();
         }
-        public static int GetCount(int IdLocacao) {
+        public static int GetCount(int IdLocacao)
+        {
             return GetVeiculos(IdLocacao).Count();
         }
     }

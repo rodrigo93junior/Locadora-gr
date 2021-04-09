@@ -32,18 +32,21 @@ namespace Controller
                 Restricoes
             );
         }
-        public static IEnumerable<Model.VeiculoPesado> GetVeiculoPesados () {
-            return Model.VeiculoPesado.GetVeiculosPesados ();
+        public static IEnumerable<Model.VeiculoPesado> GetVeiculoPesados()
+        {
+            return Model.VeiculoPesado.GetVeiculosPesados();
         }
 
-        public static Model.VeiculoPesado GetVeiculoPesado (int Id) {
+        public static Model.VeiculoPesado GetVeiculoPesado(int Id)
+        {
             int ListLenght = Model.VeiculoPesado.GetCount();
 
-            if (Id < 0 || ListLenght <= Id) {
-                throw new Exception ("Id informado é inválido.");
+            if (Id < 0 || ListLenght <= Id)
+            {
+                throw new Exception("Id informado é inválido.");
             }
 
-            return Model.VeiculoPesado.GetVeiculoPesado (Id);
+            return Model.VeiculoPesado.GetVeiculoPesado(Id);
         }
     }
 }

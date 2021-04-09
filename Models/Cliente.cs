@@ -53,7 +53,7 @@ namespace Model
                     cliente.Cpf = stringValor;
                     break;
 
-        }
+            }
             Context db = new Context();
             db.Clientes.Update(cliente);
             db.SaveChanges();

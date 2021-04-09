@@ -49,22 +49,22 @@ namespace Controller
             int Campo = Convert.ToInt32(stringCampo);
             switch (Campo)
             {
-                case 1: 
-                return Model.Cliente.AtualizarClientes(cliente, stringValor, stringCampo);
+                case 1:
+                    return Model.Cliente.AtualizarClientes(cliente, stringValor, stringCampo);
 
                 case 2:
-                Regex rgx = new Regex("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
-                if (!rgx.IsMatch(stringValor))
-                {
-                    throw new Exception("C.P.F. Inválido");
-                }
-                return Model.Cliente.AtualizarClientes(cliente, stringValor, stringCampo);
+                    Regex rgx = new Regex("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
+                    if (!rgx.IsMatch(stringValor))
+                    {
+                        throw new Exception("C.P.F. Inválido");
+                    }
+                    return Model.Cliente.AtualizarClientes(cliente, stringValor, stringCampo);
 
                 default:
-                throw new Exception("Operação inválida");
+                    throw new Exception("Operação inválida");
             }
         }
-        
+
         public static IEnumerable<Model.Cliente> ListarClientes()
         {
             return Model.Cliente.GetClientes();

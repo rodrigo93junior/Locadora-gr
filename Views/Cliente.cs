@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace View {
-    public class Cliente{
-        public static void NovoCliente(){
+namespace View
+{
+    public class Cliente
+    {
+        public static void NovoCliente()
+        {
             Console.WriteLine("Digite o nome da pessoa: ");
             string Nome = Console.ReadLine();
             Console.WriteLine("Digite a Data de Nascimento da pessoa: ");
@@ -12,24 +15,31 @@ namespace View {
             string Cpf = Console.ReadLine();
             Console.WriteLine("Digite o Número de Dias para Devolução: ");
             string DiasRetorno = Console.ReadLine();
-            try {
-                Controller.Cliente.NovoCliente (Nome, DataNascimento, Cpf, DiasRetorno);
-            } catch (Exception e) {
-                Console.WriteLine ($"Informações digitadas são incorretas: {e.Message}");
+            try
+            {
+                Controller.Cliente.NovoCliente(Nome, DataNascimento, Cpf, DiasRetorno);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Informações digitadas são incorretas: {e.Message}");
             }
         }
 
-        
-        public static void AtualizerClientes(){
+
+        public static void AtualizerClientes()
+        {
             Model.Cliente cliente;
-            try {
+            try
+            {
                 Console.WriteLine("insira o ID do Cliente: ");
                 string Id = Console.ReadLine();
                 cliente = Controller.Cliente.GetCliente(Convert.ToInt32(Id));
-            } catch (Exception e ) {
+            }
+            catch (Exception e)
+            {
                 Console.WriteLine(e.Message);
             }
-            
+
             Console.WriteLine("Digite a opção desejada:");
             Console.WriteLine(" 1 - Alterar Nome do Cliente.");
             Console.WriteLine(" 2 - Alterar CPF do Cliente.");
@@ -37,15 +47,18 @@ namespace View {
             Console.WriteLine(" Digite a informação a ser alterada: ");
             string informacao = Console.ReadLine();
         }
-        public static void DeleteCliente(){
-            
+        public static void DeleteCliente()
+        {
+
         }
-        public static void ListarClientes () {            
-            foreach (Model.Cliente cliente in Controller.Cliente.ListarClientes ()) {
-                Console.WriteLine ("---------------------------");
-                Console.WriteLine (cliente);
+        public static void ListarClientes()
+        {
+            foreach (Model.Cliente cliente in Controller.Cliente.ListarClientes())
+            {
+                Console.WriteLine("---------------------------");
+                Console.WriteLine(cliente);
             }
-            Console.WriteLine ("---------------------------\n");
+            Console.WriteLine("---------------------------\n");
         }
     }
 }
