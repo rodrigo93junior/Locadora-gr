@@ -3,8 +3,8 @@ using System.Windows.Forms;
 using System.Drawing;
 
 namespace View {
-    public class VisualMenu : Form {
-        public VisualMenu() {
+    public class Menu : Form {
+        public Menu() {
             this.Text = "GR - Locadora de Veículos";
 
             Label lblTitulo = new Label();
@@ -21,6 +21,7 @@ namespace View {
             btCadastrarCliente.Text = "Cadastrar Cliente";
             btCadastrarCliente.Location = new Point (20,80);
             btCadastrarCliente.Size = new Size(200,40);
+            btCadastrarCliente.Click += new EventHandler(this.btCadastrarCliente);
 
             Button btCadastrarVeiculoLeve = new Button();
             btCadastrarVeiculoLeve.Text = "Cadastrar Veículo Leve";
@@ -64,6 +65,11 @@ namespace View {
             this.Controls.Add(btListarCliente);
             this.Controls.Add(btListarVeiculoLeve);
             this.Controls.Add(btListarVeiculoPesado);
+        }
+
+        private void btCadastrarCliente(object sender, EventArgs e){
+            CadastrarCliente cadastrarCliente = new CadastrarCliente();
+            cadastrarCliente.Show();
         }
     }
 }

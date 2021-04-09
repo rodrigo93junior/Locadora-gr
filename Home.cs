@@ -6,7 +6,7 @@ namespace csharp_vehicles {
         
         public static void Main () {
             //Application.EnableVisualStyles();
-            Application.Run(new VisualMenu());
+            Application.Run(new Menu());
 
         }
     }
