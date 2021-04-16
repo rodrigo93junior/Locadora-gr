@@ -1,7 +1,33 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
-
+/*
+ 0         1         2         3         4         5         6         7         8         9
+  0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+  +-----------------------------------------------------------------------------------------+
+00|                                                                                         |
+01|                                                                                         |
+02|                                                                                         |
+03|                                                                                         |
+04|                                                                                         |
+05|                                                                                         |
+06|                                                                                         |
+07|                                                                                         |
+08|                                                                                         |
+09|                                                                                         |
+10|                                                                                         |
+11|                                                                                         |
+12|                                                                                         |
+13|                                                                                         |
+14|                                                                                         |
+15|                                                                                         |
+16|                                                                                         |
+17|                                                                                         |
+18|                                                                                         |
+19|                                                                                         |
+20|                                                                                         |
+  +-----------------------------------------------------------------------------------------+
+*/
 namespace View
 {
     public class CadastrarCliente : Form
@@ -15,10 +41,11 @@ namespace View
         TextBox cpf;
         Label lblDiasRetorno;
         ComboBox diasRetorno;
-        Button btnSalvarCliente;
         GroupBox genero;
         RadioButton generoFeminino;
         RadioButton generoMasculino;
+        Button btnSalvarCliente;
+        Button btnCancelar;
         public CadastrarCliente()
         {
             this.Text = "Cadastro de Cliente";
@@ -85,9 +112,15 @@ namespace View
 
             btnSalvarCliente = new Button();
             btnSalvarCliente.Text = "Salvar";
-            btnSalvarCliente.Location = new Point(120, 300);
-            btnSalvarCliente.Size = new Size(200, 40);
+            btnSalvarCliente.Location = new Point(100, 300);
+            btnSalvarCliente.Size = new Size(100, 40);
             btnSalvarCliente.Click += new EventHandler(this.botaoSalvarCliente);
+
+            btnCancelar = new Button();
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.Location = new Point(200, 300);
+            btnCancelar.Size = new Size(100, 40);
+            btnCancelar.Click += new EventHandler(this.botaoCancelar);
 
 
             this.Size = new Size(540, 400);
@@ -102,10 +135,48 @@ namespace View
             this.Controls.Add(lblDiasRetorno);
             this.Controls.Add(diasRetorno);
             this.Controls.Add(btnSalvarCliente);
+            this.Controls.Add(btnCancelar);
         }
 
         private void botaoSalvarCliente(object sender, EventArgs e)
         {
+            DialogResult resultado = MessageBox.Show(
+                "Deseja realmente cadastrar o cliente?",
+                "Confirmar Cadastro",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+            if (resultado == System.Windows.Forms.DialogResult.Yes)
+            {
+                MessageBox.Show("Usuário Cadastrado!");
+            }
+            else if (resultado == System.Windows.Forms.DialogResult.No)
+            {
+                MessageBox.Show("Usuário não cadastrado");
+            }
+            else
+            {
+                MessageBox.Show("Opção Incorreta");
+            }
+            this.Close();
+        }
+        private void botaoCancelar(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+                "Deseja realmente cancelar?",
+                "Confirmar Cadastro",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+            if (resultado == System.Windows.Forms.DialogResult.Yes)
+            {
+                MessageBox.Show("Veículo não cadastrado");
+            }
+            else 
+            {
+                MessageBox.Show("Opção Invalida!");
+            }
+            
             this.Close();
         }
     }

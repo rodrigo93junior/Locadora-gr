@@ -30,11 +30,13 @@ namespace View
             btCadastrarVeiculoLeve.Text = "Cadastrar Veículo Leve";
             btCadastrarVeiculoLeve.Location = new Point(20, 130);
             btCadastrarVeiculoLeve.Size = new Size(200, 40);
+            btCadastrarVeiculoLeve.Click += new EventHandler(this.btCadastrarVeiculoLeve);
 
             Button btCadastrarVeiculoPesado = new Button();
             btCadastrarVeiculoPesado.Text = "Cadastrar Veículo Pesado";
             btCadastrarVeiculoPesado.Location = new Point(20, 180);
             btCadastrarVeiculoPesado.Size = new Size(200, 40);
+            btCadastrarVeiculoPesado.Click += new EventHandler(this.btCadastrarVeiculoPesado);
 
             Label lblSubTituloVisualizacao = new Label();
             lblSubTituloVisualizacao.Text = "Visualização:";
@@ -74,6 +76,16 @@ namespace View
         {
             CadastrarCliente cadastrarCliente = new CadastrarCliente();
             cadastrarCliente.Show();
+        }
+        private void btCadastrarVeiculoLeve(object sender, EventArgs e)
+        {
+            CadastrarVeiculoLeve cadastrarVeiculoLeve = new CadastrarVeiculoLeve();
+            cadastrarVeiculoLeve.Show();
+        }
+        private void btCadastrarVeiculoPesado(object sender, EventArgs e)
+        {
+            CadastrarVeiculoPesado cadastrarVeiculoPesado = new CadastrarVeiculoPesado();
+            cadastrarVeiculoPesado.Show();
         }
     }
 }
