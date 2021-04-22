@@ -5,13 +5,16 @@ namespace View
 {
     namespace Lib
     {
-        class LibComboBox : ComboBox
+
+        class LibGroupBox : GroupBox
         {
-            public LibComboBox(
+            public LibGroupBox(
+                string Text,
                 Point Location,
                 Size Size
             )
             {
+                this.Text = Text;
                 this.Location = Location;
                 this.Size = Size;
             }

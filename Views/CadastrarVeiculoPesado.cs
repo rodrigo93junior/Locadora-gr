@@ -1,88 +1,55 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using View.Lib;
 
 namespace View
 {
     public class CadastrarVeiculoPesado : Form
     {
-        Label lblTitulo;
-        Label lblMarca;
-        TextBox marca;
-        Label lblModelo;
-        TextBox modelo;
-        Label lblAno;
-        TextBox ano;
-        Label lblPreco;
-        TextBox preco;
-        Label lblRestricao;
-        TextBox restricao;
-        Button btnSalvarVeiculoPesado;
-        Button btnCancelar;
+        LibLabel lblTitulo;
+        LibLabel lblMarca;
+        LibTextBox marca;
+        LibLabel lblModelo;
+        LibTextBox modelo;
+        LibLabel lblAno;
+        LibTextBox ano;
+        LibLabel lblPreco;
+        LibTextBox preco;
+        LibLabel lblRestricao;
+        LibTextBox restricao;
+        LibButton btnSalvarVeiculoPesado;
+        LibButton btnCancelar;
         public CadastrarVeiculoPesado()
         {
             this.Text = "Cadastro de Veículo Pesado";
 
-            lblTitulo = new Label();
-            lblTitulo.Text = "Cadastro de Novo Veículo Pesado";
-            lblTitulo.Location = new Point(180, 10);
-            lblTitulo.Size = new Size(200, 40);
+            lblTitulo = new LibLabel("Cadastro de Novo Veículo Pesado", new Point(180, 10), new Size(200, 40));
 
-            lblMarca = new Label();
-            lblMarca.Text = "Marca:";
-            lblMarca.Location = new Point(20, 30);
-            lblMarca.Size = new Size(120, 15);
+            lblMarca = new LibLabel("Marca:", new Point(20, 30), new Size(120, 15));
 
-            marca = new TextBox();
-            marca.Location = new Point(20, 50);
-            marca.Size = new Size(300, 40);
+            marca = new LibTextBox(new Point(20, 50), new Size(300, 40));
 
-            lblModelo = new Label();
-            lblModelo.Text = "Modelo:";
-            lblModelo.Location = new Point(20, 80);
-            lblModelo.Size = new Size(120, 15);
+            lblModelo = new LibLabel("Modelo:", new Point(20, 80), new Size(120, 15));
 
-            modelo = new TextBox();
-            modelo.Location = new Point(20, 100);
-            modelo.Size = new Size(300, 40);
+            modelo = new LibTextBox(new Point(20, 100), new Size(300, 40));
 
-            lblAno = new Label();
-            lblAno.Text = "Ano:";
-            lblAno.Location = new Point(20, 120);
-            lblAno.Size = new Size(120, 15);
+            lblAno = new LibLabel("Ano:", new Point(20, 120), new Size(120, 15));
 
-            ano = new TextBox();
-            ano.Location = new Point(20, 140);
-            ano.Size = new Size(300, 40);
+            ano = new LibTextBox(new Point(20, 140), new Size(300, 40));
 
-            lblPreco = new Label();
-            lblPreco.Text = "Preço:";
-            lblPreco.Location = new Point(20, 160);
-            lblPreco.Size = new Size(120, 15);
+            lblPreco = new LibLabel("Preço:", new Point(20, 160), new Size(120, 15));
 
-            preco = new TextBox();
-            preco.Location = new Point(20, 180);
-            preco.Size = new Size(300, 40);
+            preco = new LibTextBox(new Point(20, 180), new Size(300, 40));
 
-            lblRestricao = new Label();
-            lblRestricao.Text = "Restricao:";
-            lblRestricao.Location = new Point(20, 200);
-            lblRestricao.Size = new Size(120, 15);
+            lblRestricao = new LibLabel("Restricao:", new Point(20, 200), new Size(120, 15));
 
-            restricao = new TextBox();
-            restricao.Location = new Point(20, 220);
-            restricao.Size = new Size(300, 40);
+            restricao = new LibTextBox(new Point(20, 220), new Size(300, 40));
 
-            btnSalvarVeiculoPesado = new Button();
-            btnSalvarVeiculoPesado.Text = "Salvar";
-            btnSalvarVeiculoPesado.Location = new Point(100, 300);
-            btnSalvarVeiculoPesado.Size = new Size(100, 40);
+            btnSalvarVeiculoPesado = new LibButton("Salvar", new Point(100, 300), new Size(100, 40));
             btnSalvarVeiculoPesado.Click += new EventHandler(this.botaoSalvarVeiculoPesado);
 
-            btnCancelar = new Button();
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.Location = new Point(200, 300);
-            btnCancelar.Size = new Size(100, 40);
+            btnCancelar = new LibButton("Cancelar", new Point(200, 300), new Size(100, 40));
             btnCancelar.Click += new EventHandler(this.botaoCancelar);
 
 

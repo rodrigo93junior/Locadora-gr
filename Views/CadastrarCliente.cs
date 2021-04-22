@@ -2,7 +2,6 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using View.Lib;
-using View.LbComboBox;
 /*
  0         1         2         3         4         5         6         7         8         9
   0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -42,17 +41,17 @@ namespace View
         LibLabel lblCpf;
         LibTextBox cpf;
         LibLabel lblDiasRetorno;
-        LbComboBox diasRetorno;
-        GroupBox genero;
-        RadioButton generoFeminino;
-        RadioButton generoMasculino;
+        LibComboBox diasRetorno;
+        LibGroupBox genero;
+        LibRadioButton generoFeminino;
+        LibRadioButton generoMasculino;
         LibButton btnSalvarCliente;
         LibButton btnCancelar;
         public CadastrarCliente()
         {
             this.Text = "Cadastro de Cliente";
 
-            lblTitulo = new LibTituloLabel("Cadastro de Novo Cliente", new Point (180, 10), new Size (180, 40));
+            lblTitulo = new LibTituloLabel("Cadastro de Novo Cliente", new Point(180, 10), new Size(180, 40));
 
             lblNome = new LibLabel("Nome Completo:", new Point(20, 30), new Size(120, 15));
 
@@ -66,20 +65,11 @@ namespace View
 
             cpf = new LibTextBox(new Point(20, 150), new Size(300, 40));
 
-            genero = new GroupBox();
-            genero.Text = "Genero";
-            genero.Location = new Point(20, 180);
-            genero.Size = new Size(300, 50);
+            genero = new LibGroupBox("Genero", new Point(20, 180), new Size(300, 50));
 
-            generoFeminino = new RadioButton();
-            generoFeminino.Text = "Feminino";
-            generoFeminino.Location = new Point(2, 20);
-            generoFeminino.Size = new Size(100, 20);
+            generoFeminino = new LibRadioButton("Feminino", new Point(2, 20), new Size(100, 20));
 
-            generoMasculino = new RadioButton();
-            generoMasculino.Text = "Maculino";
-            generoMasculino.Location = new Point(120, 20);
-            generoMasculino.Size = new Size(100, 20);
+            generoMasculino = new LibRadioButton("Maculino", new Point(120, 20), new Size(100, 20));
 
             genero.Controls.Add(generoFeminino);
             genero.Controls.Add(generoMasculino);
@@ -145,11 +135,11 @@ namespace View
             {
                 MessageBox.Show("Veículo não cadastrado");
             }
-            else 
+            else
             {
                 MessageBox.Show("Opção Invalida!");
             }
-            
+
             this.Close();
         }
     }

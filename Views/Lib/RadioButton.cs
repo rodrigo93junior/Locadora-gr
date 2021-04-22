@@ -5,13 +5,15 @@ namespace View
 {
     namespace Lib
     {
-        class LibComboBox : ComboBox
+        class LibRadioButton : RadioButton
         {
-            public LibComboBox(
+            public LibRadioButton(
+                string Text,
                 Point Location,
                 Size Size
             )
             {
+                this.Text = Text;
                 this.Location = Location;
                 this.Size = Size;
             }
