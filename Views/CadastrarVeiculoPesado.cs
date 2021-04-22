@@ -103,11 +103,11 @@ namespace View
             {
                 MessageBox.Show("Veículo não cadastrado");
             }
-            else 
+            else
             {
                 MessageBox.Show("Opção Invalida!");
             }
-            
+
             this.Close();
         }
     }

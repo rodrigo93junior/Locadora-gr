@@ -51,7 +51,7 @@ namespace View
             btnSalvarVeiculoLeve = new LibButton("Salvar", new Point(100, 300), new Size(100, 40));
             btnSalvarVeiculoLeve.Click += new EventHandler(this.botaoSalvarVeiculoLeve);
 
-            
+
             btnCancelar = new LibButton("Cancelar", new Point(200, 300), new Size(100, 40));
 
 
@@ -93,7 +93,7 @@ namespace View
             }
             this.Close();
         }
-         private void botaoCancelar(object sender, EventArgs e)
+        private void botaoCancelar(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show(
                 "Deseja realmente cancelar?",
@@ -105,11 +105,11 @@ namespace View
             {
                 MessageBox.Show("Veículo não cadastrado");
             }
-            else 
+            else
             {
                 MessageBox.Show("Opção Invalida!");
             }
-            
+
             this.Close();
         }
     }
