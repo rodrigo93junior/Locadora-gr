@@ -7,7 +7,7 @@ namespace View
 {
     public class CadastrarVeiculoLeve : Form
     {
-        LibLabel lblTitulo;
+        LibTituloLabel lblTitulo;
         LibLabel lblMarca;
         LibTextBox marca;
         LibLabel lblModelo;
@@ -24,7 +24,7 @@ namespace View
         {
             this.Text = "Cadastro de Veículo Leve";
 
-            lblTitulo = new LibLabel("Cadastro de Novo Veículo Leve", new Point(180, 10), new Size(180, 40));
+            lblTitulo = new LibTituloLabel("Cadastro de Novo Veículo Leve", new Point(180, 10), new Size(180, 40));
 
             lblMarca = new LibLabel("Marca:", new Point(20, 30), new Size(120, 15));
 
