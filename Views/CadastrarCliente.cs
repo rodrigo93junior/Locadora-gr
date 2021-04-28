@@ -39,7 +39,7 @@ namespace View
         LibLabel lblDataNascimento;
         LibTextBox dataNascimento;
         LibLabel lblCpf;
-        LibTextBox cpf;
+        LibMaskedTextBox cpf;
         LibLabel lblDiasRetorno;
         LibComboBox diasRetorno;
         LibGroupBox genero;
@@ -63,7 +63,7 @@ namespace View
 
             lblCpf = new LibLabel("CPF:", new Point(20, 130), new Size(120, 15));
 
-            cpf = new LibTextBox(new Point(20, 150), new Size(300, 40));
+            cpf = new LibMaskedTextBox(new Point(20, 150), new Size(300, 40), "000,000,000-00");
 
             genero = new LibGroupBox("Genero", new Point(20, 180), new Size(300, 50));
 

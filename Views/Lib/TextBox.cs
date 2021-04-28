@@ -16,5 +16,18 @@ namespace View
                 this.Size = Size;
             }
         }
+        class LibMaskedTextBox : MaskedTextBox
+        {
+            public LibMaskedTextBox(
+                Point Location,
+                Size Size,
+                string Mask
+            )
+            {
+                this.Location = Location;
+                this.Size = Size;
+                this.Mask = Mask;
+            }
+        }
     }
 }

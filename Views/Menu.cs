@@ -7,9 +7,16 @@ namespace View
 {
     public class Menu : Form
     {
+        PictureBox pbImagem;
         public Menu()
         {
             this.Text = "GR - Locadora de Veículos";
+
+            pbImagem = new PictureBox();
+            pbImagem.Size = new Size(200, 200);
+            pbImagem.Location = new Point(300,250);
+            pbImagem.Load("gr.jpg");
+            pbImagem.SizeMode = PictureBoxSizeMode.Zoom;
 
             Label lblTitulo = new Label();
             lblTitulo.Text = "Bem vindo!";
@@ -88,6 +95,7 @@ namespace View
 
             this.Size = new Size(540, 520);
             this.Controls.Add(lblTitulo);
+            this.Controls.Add(pbImagem);
             this.Controls.Add(lblSubTitulo);
             this.Controls.Add(btCadastrarLocacao);
             this.Controls.Add(btCadastrarCliente);

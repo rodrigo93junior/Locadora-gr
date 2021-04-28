@@ -16,5 +16,18 @@ namespace View
                 this.Size = Size;
             }
         }
+        class LibNumeric : NumericUpDown
+        {
+            public LibNumeric(
+                Point Location,
+                Size Size,
+                string Value
+            )
+            {
+                this.Location = Location;
+                this.Size = Size;
+                this.Value = Value;
+            }
+        }
     }
 }
