@@ -13,7 +13,7 @@ namespace View
         LibLabel lblModelo;
         LibTextBox modelo;
         LibLabel lblAno;
-        LibTextBox ano;
+        LibMaskedTextBox ano;
         LibLabel lblPreco;
         LibTextBox preco;
         LibLabel lblCor;
@@ -37,7 +37,7 @@ namespace View
 
             lblAno = new LibLabel("Ano:", new Point(20, 120), new Size(120, 15));
 
-            ano = new LibTextBox(new Point(20, 140), new Size(300, 40));
+            ano = new LibMaskedTextBox(new Point(20, 140), new Size(300, 40),"00/00/0000");
 
             lblPreco = new LibLabel("Preço:", new Point(20, 160), new Size(120, 15));
 

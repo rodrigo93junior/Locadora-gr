@@ -13,87 +13,87 @@ namespace View
             this.Text = "GR - Locadora de Veículos";
 
             pbImagem = new PictureBox();
-            pbImagem.Size = new Size(200, 200);
-            pbImagem.Location = new Point(300,250);
+            pbImagem.Size = new Size(300, 120);
+            pbImagem.Location = new Point(130,3);
             pbImagem.Load("gr.jpg");
             pbImagem.SizeMode = PictureBoxSizeMode.Zoom;
 
             Label lblTitulo = new Label();
             lblTitulo.Text = "Bem vindo!";
-            lblTitulo.Location = new Point(220, 10);
-            lblTitulo.Size = new Size(80, 40);
+            lblTitulo.Location = new Point(220, 110);
+            lblTitulo.Size = new Size(80, 50);
 
             Label lblSubTitulo = new Label();
             lblSubTitulo.Text = "Cadastros:";
-            lblSubTitulo.Location = new Point(20, 50);
+            lblSubTitulo.Location = new Point(20, 140);
             lblSubTitulo.Size = new Size(80, 20);
 
             Button btCadastrarLocacao = new Button();
             btCadastrarLocacao.Text = "Cadastrar Locação";
-            btCadastrarLocacao.Location = new Point(20, 80);
+            btCadastrarLocacao.Location = new Point(20, 180);
             btCadastrarLocacao.Size = new Size(200, 40);
             btCadastrarLocacao.Click += new EventHandler(this.btCadastrarLocacao);
 
             Button btCadastrarCliente = new Button();
             btCadastrarCliente.Text = "Cadastrar Cliente";
-            btCadastrarCliente.Location = new Point(20, 130);
+            btCadastrarCliente.Location = new Point(20, 230);
             btCadastrarCliente.Size = new Size(200, 40);
             btCadastrarCliente.Click += new EventHandler(this.btCadastrarCliente);
 
             Button btCadastrarVeiculoLeve = new Button();
             btCadastrarVeiculoLeve.Text = "Cadastrar Veículo Leve";
-            btCadastrarVeiculoLeve.Location = new Point(20, 180);
+            btCadastrarVeiculoLeve.Location = new Point(20, 280);
             btCadastrarVeiculoLeve.Size = new Size(200, 40);
             btCadastrarVeiculoLeve.Click += new EventHandler(this.btCadastrarVeiculoLeve);
 
             Button btCadastrarVeiculoPesado = new Button();
             btCadastrarVeiculoPesado.Text = "Cadastrar Veículo Pesado";
-            btCadastrarVeiculoPesado.Location = new Point(20, 230);
+            btCadastrarVeiculoPesado.Location = new Point(20, 330);
             btCadastrarVeiculoPesado.Size = new Size(200, 40);
             btCadastrarVeiculoPesado.Click += new EventHandler(this.btCadastrarVeiculoPesado);
 
             Label lblSubTituloVisualizacao = new Label();
             lblSubTituloVisualizacao.Text = "Visualização:";
-            lblSubTituloVisualizacao.Location = new Point(300, 50);
+            lblSubTituloVisualizacao.Location = new Point(300, 140);
             lblSubTituloVisualizacao.Size = new Size(80, 20);
 
             Button btListarCliente = new Button();
             btListarCliente.Text = "Listar Cliente";
-            btListarCliente.Location = new Point(300, 80);
+            btListarCliente.Location = new Point(300, 180);
             btListarCliente.Size = new Size(200, 40);
 
             Button btListarVeiculoLeve = new Button();
             btListarVeiculoLeve.Text = "Listar Veículo Leve";
-            btListarVeiculoLeve.Location = new Point(300, 130);
+            btListarVeiculoLeve.Location = new Point(300, 230);
             btListarVeiculoLeve.Size = new Size(200, 40);
 
             Button btListarVeiculoPesado = new Button();
             btListarVeiculoPesado.Text = "Listar Veículo Pesado";
-            btListarVeiculoPesado.Location = new Point(300, 180);
+            btListarVeiculoPesado.Location = new Point(300, 280);
             btListarVeiculoPesado.Size = new Size(200, 40);
 
             Label lblSubTituloEditar = new Label();
             lblSubTituloEditar.Text = "Editar:";
-            lblSubTituloEditar.Location = new Point(20, 290);
+            lblSubTituloEditar.Location = new Point(20, 390);
             lblSubTituloEditar.Size = new Size(80, 20);
 
             Button btEditarCliente = new Button();
             btEditarCliente.Text = "Editar Cliente";
-            btEditarCliente.Location = new Point(20, 320);
+            btEditarCliente.Location = new Point(20, 420);
             btEditarCliente.Size = new Size(200, 40);
 
             Button btEditarVeiculoLeve = new Button();
             btEditarVeiculoLeve.Text = "Editar Veículo Leve";
-            btEditarVeiculoLeve.Location = new Point(20, 370);
+            btEditarVeiculoLeve.Location = new Point(20, 470);
             btEditarVeiculoLeve.Size = new Size(200, 40);
 
             Button btEditarVeiculoPesado = new Button();
             btEditarVeiculoPesado.Text = "Editar Veículo Pesado";
-            btEditarVeiculoPesado.Location = new Point(20, 420);
+            btEditarVeiculoPesado.Location = new Point(20, 520);
             btEditarVeiculoPesado.Size = new Size(200, 40);
 
 
-            this.Size = new Size(540, 520);
+            this.Size = new Size(600, 700);
             this.Controls.Add(lblTitulo);
             this.Controls.Add(pbImagem);
             this.Controls.Add(lblSubTitulo);

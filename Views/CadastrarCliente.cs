@@ -37,11 +37,11 @@ namespace View
         LibLabel lblNome;
         LibTextBox nome;
         LibLabel lblDataNascimento;
-        LibTextBox dataNascimento;
+        LibMaskedTextBox dataNascimento;
         LibLabel lblCpf;
         LibMaskedTextBox cpf;
         LibLabel lblDiasRetorno;
-        LibComboBox diasRetorno;
+        LibNumeric diasRetorno;
         LibGroupBox genero;
         LibRadioButton generoFeminino;
         LibRadioButton generoMasculino;
@@ -59,7 +59,7 @@ namespace View
 
             lblDataNascimento = new LibLabel("Data de Nascimento:", new Point(20, 80), new Size(120, 15));
 
-            dataNascimento = new LibTextBox(new Point(20, 100), new Size(300, 40));
+            dataNascimento = new LibMaskedTextBox(new Point(20, 100), new Size(300, 40), "00/00/0000");
 
             lblCpf = new LibLabel("CPF:", new Point(20, 130), new Size(120, 15));
 
@@ -76,8 +76,7 @@ namespace View
 
             lblDiasRetorno = new LibLabel("Dias para Retorno:", new Point(20, 240), new Size(120, 15));
 
-            diasRetorno = new LibComboBox(new Point(20, 260), new Size(300, 40));
-            diasRetorno.Items.AddRange(new String[] { "1 dia", "5 dias", "10 dias", "15 dias" });
+            diasRetorno = new LibNumeric(new Point(20, 260), new Size(300, 40), 1, 180, 1);
 
             btnSalvarCliente = new LibButton("Salvar", new Point(100, 300), new Size(100, 40));
             btnSalvarCliente.Click += new EventHandler(this.botaoSalvarCliente);

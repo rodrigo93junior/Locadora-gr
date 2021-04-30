@@ -21,12 +21,16 @@ namespace View
             public LibNumeric(
                 Point Location,
                 Size Size,
-                string Value
+                int Value,
+                int Maximum,
+                int Minimum
             )
             {
                 this.Location = Location;
                 this.Size = Size;
                 this.Value = Value;
+                this.Maximum = Maximum;
+                this.Minimum = Minimum;
             }
         }
     }
