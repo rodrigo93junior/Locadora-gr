@@ -59,11 +59,11 @@ namespace View
 
             lblDataNascimento = new LibLabel("Data de Nascimento:", new Point(20, 80), new Size(120, 15));
 
-            dataNascimento = new LibMaskedTextBox(new Point(20, 100), new Size(300, 40), "00/00/0000");
+            dataNascimento = new LibMaskedTextBox(new Point(20, 100), new Size(90, 40), "00/00/0000");
 
             lblCpf = new LibLabel("CPF:", new Point(20, 130), new Size(120, 15));
 
-            cpf = new LibMaskedTextBox(new Point(20, 150), new Size(300, 40), "000,000,000-00");
+            cpf = new LibMaskedTextBox(new Point(20, 150), new Size(90, 40), "000,000,000-00");
 
             genero = new LibGroupBox("Genero", new Point(20, 180), new Size(300, 50));
 
@@ -132,7 +132,7 @@ namespace View
             );
             if (resultado == System.Windows.Forms.DialogResult.Yes)
             {
-                MessageBox.Show("Veículo não cadastrado");
+                MessageBox.Show("Cliente não cadastrado");
             }
             else
             {

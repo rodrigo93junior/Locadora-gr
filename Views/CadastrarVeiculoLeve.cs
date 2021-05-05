@@ -51,8 +51,8 @@ namespace View
             btnSalvarVeiculoLeve = new LibButton("Salvar", new Point(100, 300), new Size(100, 40));
             btnSalvarVeiculoLeve.Click += new EventHandler(this.botaoSalvarVeiculoLeve);
 
-
             btnCancelar = new LibButton("Cancelar", new Point(200, 300), new Size(100, 40));
+            btnCancelar.Click += new EventHandler(this.botaoCancelar);
 
 
             this.Size = new Size(540, 400);
