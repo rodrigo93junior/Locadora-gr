@@ -133,5 +133,11 @@ namespace View
             CadastrarVeiculoPesado cadastrarVeiculoPesado = new CadastrarVeiculoPesado();
             cadastrarVeiculoPesado.Show();
         }
+    
+        private void btListarCliente(object sender, EventArgs e)
+        {
+            ListarCliente listarCliente = new ListarCliente();
+            listarCliente.Show();
+        }
     }
 }
