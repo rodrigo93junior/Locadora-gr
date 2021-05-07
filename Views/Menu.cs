@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 
 
-namespace View
+namespace Views
 {
     public class Menu : Form
     {
@@ -61,6 +61,7 @@ namespace View
             btListarCliente.Text = "Listar Cliente";
             btListarCliente.Location = new Point(300, 180);
             btListarCliente.Size = new Size(200, 40);
+            btListarCliente.Click += new EventHandler(this.btListarCliente);
 
             Button btListarVeiculoLeve = new Button();
             btListarVeiculoLeve.Text = "Listar Veículo Leve";

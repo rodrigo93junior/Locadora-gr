@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
-using View.Lib;
+using Views.Lib;
 /*
  0         1         2         3         4         5         6         7         8         9
   0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -29,7 +29,7 @@ using View.Lib;
 20|                                                                                         |
   +-----------------------------------------------------------------------------------------+
 */
-namespace View
+namespace Views
 {
     public class CadastrarCliente : Form
     {

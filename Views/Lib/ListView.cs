@@ -1,7 +1,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace View
+namespace Views
 {
     namespace Lib
     {
@@ -14,6 +14,7 @@ namespace View
             {
                 this.Location = Location;
                 this.Size = Size;
+                this.View = View.Details;
             }
         }
     }

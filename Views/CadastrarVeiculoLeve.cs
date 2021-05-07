@@ -1,9 +1,9 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
-using View.Lib;
+using Views.Lib;
 
-namespace View
+namespace Views
 {
     public class CadastrarVeiculoLeve : Form
     {

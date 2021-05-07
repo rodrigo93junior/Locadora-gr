@@ -1,6 +1,6 @@
 using System;
 
-namespace View
+namespace Views
 {
     public class VeiculoLeve
     {

@@ -1,7 +1,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace View
+namespace Views
 {
     namespace Lib
     {
