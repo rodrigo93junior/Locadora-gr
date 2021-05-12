@@ -1,49 +1,83 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
-//using View.Lib;
+using Views.Lib;
 
 namespace Views
 {
     public class ListarCliente : Form
     {
-
+        ListView listagemCliente;
+        LibTituloLabel lblTitulo;
+        LibLabel lblNome;
+        LibTextBox nome;
+        LibLabel lblIdCliente;
+        LibTextBox idCliente;
+        LibLabel lblOu;
+        LibButton btnOk;
         public ListarCliente()
         {
-            this.Text = "Lista de Clientes";
+            this.Text = "Localizar de Cliente";
 
-            ListView listagemCliente1 = new ListView();
-            listagemCliente1.Bounds = new Rectangle(new Point(10, 10), new Size(300, 200));
-            listagemCliente1.View = View.Details;
+            lblTitulo = new LibTituloLabel("Buscar Cliente Cadastrado", new Point(180, 10), new Size(180, 40));
 
-            ListViewItem nome = new ListViewItem("Roberto Silva");
-            nome.SubItems.Add("20/02/1989");
-            nome.SubItems.Add("000.000.000-00");
-            nome.SubItems.Add("2");
-            ListViewItem dataNascimento = new ListViewItem("Data de nascimento", 0);
-            dataNascimento.SubItems.Add("20/02/1989");
-            dataNascimento.SubItems.Add("06/12/1991");
-            dataNascimento.SubItems.Add("18/03/2000");
-            ListViewItem cpf = new ListViewItem("CPF");
-            dataNascimento.SubItems.Add("000.000.000-00");
-            dataNascimento.SubItems.Add("000.000.000-00");
-            dataNascimento.SubItems.Add("000.000.000-00");
-            ListViewItem diasDevolucao = new ListViewItem("Dias para Devolução");
-            diasDevolucao.SubItems.Add("2");
-            diasDevolucao.SubItems.Add("12");
-            diasDevolucao.SubItems.Add("30");
+            lblIdCliente = new LibLabel("ID do Cliente:", new Point(20, 30), new Size(100, 15));
 
-            listagemCliente1.Columns.Add("Nome", -2, HorizontalAlignment.Left);
-            listagemCliente1.Columns.Add("Data de Nascimento", -2, HorizontalAlignment.Left);
-            listagemCliente1.Columns.Add("CPF", -2, HorizontalAlignment.Left);
-            listagemCliente1.Columns.Add("Dias para Retorno", -2, HorizontalAlignment.Left);
+            idCliente = new LibTextBox(new Point(20, 50), new Size(100, 40));
 
-            listagemCliente1.Items.AddRange(new ListViewItem[] { nome, dataNascimento, cpf, diasDevolucao });
+            lblOu = new LibLabel("Ou", new Point(20, 80), new Size(100, 15));
 
-            this.Controls.Add(listagemCliente1);
+            lblNome = new LibLabel("Nome do Cliente:", new Point(20, 110), new Size(300, 15));
 
-            this.Size = new Size(600, 600);
+            nome = new LibTextBox(new Point(20, 140), new Size(300, 40));
+            
+            listagemCliente = new ListView();
+            listagemCliente.Bounds = new Rectangle(new Point(10, 200), new Size(562, 300));
+            listagemCliente.View = View.Details;
 
+            ListViewItem cliente1 = new ListViewItem("000001");
+            cliente1.SubItems.Add("Roberto Silva");
+            cliente1.SubItems.Add("20/02/1989");
+            cliente1.SubItems.Add("547.689.030-22");
+            cliente1.SubItems.Add("2");
+
+            ListViewItem cliente2 = new ListViewItem("000002");
+            cliente2.SubItems.Add("José da Silva");
+            cliente2.SubItems.Add("15/12/1979");
+            cliente2.SubItems.Add("002.747.032-10");
+            cliente2.SubItems.Add("8");
+
+            ListViewItem cliente3 = new ListViewItem("000003");
+            cliente3.SubItems.Add("Graziela Nunes");
+            cliente3.SubItems.Add("05/07/1990");
+            cliente3.SubItems.Add("032.099.325-10");
+            cliente3.SubItems.Add("15");
+            
+            listagemCliente.Columns.Add("ID", -2, HorizontalAlignment.Left);
+            listagemCliente.Columns.Add("Nome", -2, HorizontalAlignment.Left);
+            listagemCliente.Columns.Add("Data de Nascimento", -2, HorizontalAlignment.Left);
+            listagemCliente.Columns.Add("CPF", -2, HorizontalAlignment.Left);
+            listagemCliente.Columns.Add("Dias para Retorno", -2, HorizontalAlignment.Left);
+
+            listagemCliente.Items.AddRange(new ListViewItem[] { cliente1, cliente2, cliente3 });
+
+            btnOk = new LibButton("OK", new Point(250, 550), new Size(100, 40));
+            btnOk.Click += new EventHandler(this.botaoOk);
+
+            this.Controls.Add(listagemCliente);
+            this.Controls.Add(lblTitulo);
+            this.Controls.Add(lblNome);
+            this.Controls.Add(nome);
+            this.Controls.Add(lblIdCliente);
+            this.Controls.Add(idCliente);
+            this.Controls.Add(lblOu);
+            this.Controls.Add(btnOk);
+
+            this.Size = new Size(600, 680);
+        }
+        private void botaoOk(object sender, EventArgs e)
+        {        
+            this.Close();
         }
     }
 }

@@ -43,6 +43,7 @@ namespace Views
         LibRadioButton veiculoPesado;
         LibLabel lblModelosVeiculos;
         LibComboBox modelosVeiculos;
+        Calendario monthCalendar1;
         LibButton btnSalvarCliente;
         LibButton btnCancelar;
         public CadastrarLocacao()
@@ -68,6 +69,8 @@ namespace Views
             tipo.Controls.Add(veiculoLeve);
             tipo.Controls.Add(veiculoPesado);
 
+            monthCalendar1 = new Calendario(new Point (370, 30));
+
             lblModelosVeiculos = new LibLabel("Modelos de Veículos:", new Point(20, 240), new Size(120, 15));
 
             modelosVeiculos = new LibComboBox(new Point(20, 260), new Size(300, 40));
@@ -80,13 +83,14 @@ namespace Views
             btnCancelar.Click += new EventHandler(this.botaoCancelar);
 
 
-            this.Size = new Size(540, 400);
+            this.Size = new Size(700, 400);
             this.Controls.Add(lblTitulo);
             this.Controls.Add(lblNome);
             this.Controls.Add(nome);
             this.Controls.Add(lblDataLocacao);
             this.Controls.Add(dataLocacao);
             this.Controls.Add(tipo);
+            this.Controls.Add(monthCalendar1);
             this.Controls.Add(btnSalvarCliente);
             this.Controls.Add(btnCancelar);
         }

@@ -58,18 +58,18 @@ namespace Views
             lblSubTituloVisualizacao.Size = new Size(80, 20);
 
             Button btListarCliente = new Button();
-            btListarCliente.Text = "Listar Cliente";
+            btListarCliente.Text = "Buscar Cliente";
             btListarCliente.Location = new Point(300, 180);
             btListarCliente.Size = new Size(200, 40);
             btListarCliente.Click += new EventHandler(this.btListarCliente);
 
             Button btListarVeiculoLeve = new Button();
-            btListarVeiculoLeve.Text = "Listar Veículo Leve";
+            btListarVeiculoLeve.Text = "Buscar Veículo Leve";
             btListarVeiculoLeve.Location = new Point(300, 230);
             btListarVeiculoLeve.Size = new Size(200, 40);
 
             Button btListarVeiculoPesado = new Button();
-            btListarVeiculoPesado.Text = "Listar Veículo Pesado";
+            btListarVeiculoPesado.Text = "Buscar Veículo Pesado";
             btListarVeiculoPesado.Location = new Point(300, 280);
             btListarVeiculoPesado.Size = new Size(200, 40);
 
