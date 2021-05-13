@@ -34,6 +34,10 @@ namespace Views
     public class CadastrarLocacao : Form
     {
         LibTituloLabel lblTitulo;
+        LibTituloLabel lblPesado;
+
+        LibTituloLabel lblLeve;
+
         LibLabel lblNome;
         LibTextBox nome;
         LibLabel lblDataLocacao;
@@ -42,7 +46,8 @@ namespace Views
         LibRadioButton veiculoLeve;
         LibRadioButton veiculoPesado;
         LibLabel lblModelosVeiculos;
-        LibComboBox modelosVeiculos;
+        LibComboBox modelosVeiculosLeves;
+        LibComboBox modelosVeiculosPesados;
         Calendario monthCalendar1;
         LibButton btnSalvarCliente;
         LibButton btnCancelar;
@@ -63,18 +68,20 @@ namespace Views
             tipo = new LibGroupBox("Tipo", new Point(20, 150), new Size(300, 50));
 
             veiculoLeve = new LibRadioButton("Veículo Leve", new Point(2, 20), new Size(110, 20));
+            veiculoLeve.Click += new EventHandler(this.clickVeiculoLeve);
 
             veiculoPesado = new LibRadioButton("Veículo Pesado", new Point(120, 20), new Size(110, 20));
-
-            tipo.Controls.Add(veiculoLeve);
-            tipo.Controls.Add(veiculoPesado);
+            veiculoPesado.Click += new EventHandler(this.clickVeiculoPesado);
 
             monthCalendar1 = new Calendario(new Point (370, 30));
 
             lblModelosVeiculos = new LibLabel("Modelos de Veículos:", new Point(20, 240), new Size(120, 15));
 
-            modelosVeiculos = new LibComboBox(new Point(20, 260), new Size(300, 40));
-            modelosVeiculos.Items.AddRange(new String[] { "Modelo 1", "Modelo 2", "Modelo 3", "Modelo 4" });
+            modelosVeiculosLeves = new LibComboBox(new Point(20, 260), new Size(300, 40));
+            modelosVeiculosLeves.Items.AddRange(new String[] { "Civic EXS", "Accord EXL", "Cruze LTZ", "HB20sx" });
+
+            modelosVeiculosPesados = new LibComboBox(new Point(20, 260), new Size(300, 40));
+            modelosVeiculosPesados.Items.AddRange(new String[] { "Volvo FH 540", "Scania R450", "Volvo FH 460", "Mercedes-Benz Actros 2651" });
 
             btnSalvarCliente = new LibButton("Salvar", new Point(100, 300), new Size(100, 40));
             btnSalvarCliente.Click += new EventHandler(this.botaoSalvarCliente);
@@ -85,16 +92,29 @@ namespace Views
 
             this.Size = new Size(700, 400);
             this.Controls.Add(lblTitulo);
+            this.Controls.Add(modelosVeiculosLeves);
+            this.Controls.Add(modelosVeiculosPesados);
             this.Controls.Add(lblNome);
             this.Controls.Add(nome);
             this.Controls.Add(lblDataLocacao);
             this.Controls.Add(dataLocacao);
             this.Controls.Add(tipo);
             this.Controls.Add(monthCalendar1);
+            tipo.Controls.Add(veiculoLeve);
+            tipo.Controls.Add(veiculoPesado);
             this.Controls.Add(btnSalvarCliente);
             this.Controls.Add(btnCancelar);
         }
-
+        private void clickVeiculoLeve(object sender, EventArgs e)
+        {
+            this.modelosVeiculosLeves.Show();
+            this.modelosVeiculosPesados.Hide();
+        }
+        private void clickVeiculoPesado(object sender, EventArgs e)
+        {
+            this.modelosVeiculosPesados.Show();
+            this.modelosVeiculosLeves.Hide();
+        }
         private void botaoSalvarCliente(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show(
