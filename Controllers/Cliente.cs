@@ -18,7 +18,7 @@ namespace Controller
             Regex rgx = new Regex("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
             if (!rgx.IsMatch(Cpf))
             {
-                throw new Exception("C.P.F. Inválido");
+                throw new Exception("CPF Inválido");
             }
 
             DateTime DataNascimento;

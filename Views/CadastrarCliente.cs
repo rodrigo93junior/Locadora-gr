@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.Lib;
+
 /*
  0         1         2         3         4         5         6         7         8         9
   0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -111,6 +113,12 @@ namespace Views
             if (resultado == System.Windows.Forms.DialogResult.Yes)
             {
                 MessageBox.Show("Usuário Cadastrado!");
+                Controller.Cliente.NovoCliente(
+                    this.nome.Text,
+                    this.dataNascimento.Text,
+                    this.cpf.Text,
+                    this.diasRetorno.Text
+                );
             }
             else if (resultado == System.Windows.Forms.DialogResult.No)
             {

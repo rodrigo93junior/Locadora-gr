@@ -34,10 +34,6 @@ namespace Views
     public class CadastrarLocacao : Form
     {
         LibTituloLabel lblTitulo;
-        LibTituloLabel lblPesado;
-
-        LibTituloLabel lblLeve;
-
         LibLabel lblNome;
         LibTextBox nome;
         LibLabel lblDataLocacao;
