@@ -74,7 +74,7 @@ namespace Controller
         {
             int ListLenght = Model.Cliente.GetCount();
 
-            if (Id < 0 || ListLenght <= Id)
+            if (Id < 0 || ListLenght < Id)
             {
                 throw new Exception("Id informado é inválido.");
             }

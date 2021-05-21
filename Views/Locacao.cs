@@ -17,7 +17,7 @@ namespace Views
             Console.WriteLine("Informe a Data da Locação: ");
             string DataLocacao = Console.ReadLine();
 
-            Console.WriteLine("Foram locados veículos leves? [1] Sim");
+            Console.WriteLine("Deseja locar veículos leves? [1] Sim");
             opt = Convert.ToInt32(Console.ReadLine());
             if (opt == 1)
             {
@@ -34,11 +34,11 @@ namespace Views
                     {
                         Console.WriteLine(e.Message);
                     }
-                    Console.WriteLine("Deseja informar outro veículo? [1] Sim");
+                    Console.WriteLine("Deseja locar outro veículo? [1] Sim");
                     optLeve = Convert.ToInt32(Console.ReadLine());
                 } while (optLeve == 1);
             }
-            Console.WriteLine("Foram locados veículos pesados? [1] Sim");
+            Console.WriteLine("Deleja locar veículos pesados? [1] Sim");
             opt = Convert.ToInt32(Console.ReadLine());
             if (opt == 1)
             {

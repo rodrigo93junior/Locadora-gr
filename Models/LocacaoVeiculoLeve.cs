@@ -2,16 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Repositorio;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
     public class LocacaoVeiculoLeve
     {
-        public string Id { set; get; }
+        public int Id { set; get; }
         public int IdLocacao { set; get; }
-        public Locacao Locacao { set; get; }
+        [NotMapped]
+        public virtual Locacao Locacao { set; get; }
         public int IdVeiculoLeve { set; get; }
-        public VeiculoLeve VeiculoLeve { set; get; }
+        [NotMapped]
+        public virtual VeiculoLeve VeiculoLeve { set; get; }
 
         public LocacaoVeiculoLeve()
         {

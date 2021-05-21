@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Repositorio;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
@@ -9,9 +10,11 @@ namespace Model
     {
         public int Id { set; get; }
         public int IdLocacao { set; get; }
-        public Locacao Locacao { set; get; }
+        [NotMapped]
+        public virtual Locacao Locacao { set; get; }
         public int IdVeiculoPesado { set; get; }
-        public VeiculoPesado VeiculoPesado { set; get; }
+        [NotMapped]
+        public virtual VeiculoPesado VeiculoPesado { set; get; }
 
         public LocacaoVeiculoPesado()
         {

@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Repositorio;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
     public class Locacao {
         public int Id {set; get;} // Identificador Único (ID)
         public int IdCliente { set; get; } // Identificador Único do Cliente
-        public Cliente Cliente { set; get; } // Cliente
+        [NotMapped]
+        public virtual Cliente Cliente { set; get; } // Cliente
         public DateTime DataLocacao { set; get; }// Data de Locação
 
         public Locacao(){
@@ -26,6 +28,8 @@ namespace Model
             this.IdCliente = Cliente.Id;
             this.Cliente = Cliente;
             this.DataLocacao = DataLocacao;
+            db.Locacoes.Add (this);
+            db.SaveChanges();
 
             foreach (VeiculoLeve veiculo in VeiculosLeves) {
                 LocacaoVeiculoLeve locacaoVeiculoLeve = new  LocacaoVeiculoLeve (this, veiculo);
@@ -33,10 +37,7 @@ namespace Model
 
             foreach (VeiculoPesado veiculo in VeiculosPesados) {
                 LocacaoVeiculoPesado locacaoVeiculoPesado = new  LocacaoVeiculoPesado (this, veiculo);
-            }
-
-            db.Locacoes.Add (this);
-            db.SaveChanges();
+            }           
         }
         public double GetPrecoLocacao() {
             double total = 0;

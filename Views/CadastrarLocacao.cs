@@ -2,40 +2,15 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.Lib;
-/*
- 0         1         2         3         4         5         6         7         8         9
-  0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-  +-----------------------------------------------------------------------------------------+
-00|                                                                                         |
-01|                                                                                         |
-02|                                                                                         |
-03|                                                                                         |
-04|                                                                                         |
-05|                                                                                         |
-06|                                                                                         |
-07|                                                                                         |
-08|                                                                                         |
-09|                                                                                         |
-10|                                                                                         |
-11|                                                                                         |
-12|                                                                                         |
-13|                                                                                         |
-14|                                                                                         |
-15|                                                                                         |
-16|                                                                                         |
-17|                                                                                         |
-18|                                                                                         |
-19|                                                                                         |
-20|                                                                                         |
-  +-----------------------------------------------------------------------------------------+
-*/
+using System.Collections.Generic;
+
 namespace Views
 {
     public class CadastrarLocacao : Form
     {
         LibTituloLabel lblTitulo;
-        LibLabel lblNome;
-        LibTextBox nome;
+        LibLabel lblId;
+        LibTextBox idCliente;
         LibLabel lblDataLocacao;
         LibTextBox dataLocacao;
         LibGroupBox tipo;
@@ -53,9 +28,9 @@ namespace Views
 
             lblTitulo = new LibTituloLabel("Cadastro de Nova Locação", new Point(180, 10), new Size(180, 40));
 
-            lblNome = new LibLabel("Nome do Cliente:", new Point(20, 30), new Size(120, 15));
+            lblId = new LibLabel("ID do Cliente:", new Point(20, 30), new Size(120, 15));
 
-            nome = new LibTextBox(new Point(20, 50), new Size(300, 40));
+            idCliente = new LibTextBox(new Point(20, 50), new Size(300, 40));
 
             lblDataLocacao = new LibLabel("Data de Locação:", new Point(20, 80), new Size(120, 15));
 
@@ -69,15 +44,27 @@ namespace Views
             veiculoPesado = new LibRadioButton("Veículo Pesado", new Point(120, 20), new Size(110, 20));
             veiculoPesado.Click += new EventHandler(this.clickVeiculoPesado);
 
-            monthCalendar1 = new Calendario(new Point (370, 30));
+            monthCalendar1 = new Calendario(new Point(370, 30));
 
             lblModelosVeiculos = new LibLabel("Modelos de Veículos:", new Point(20, 240), new Size(120, 15));
 
             modelosVeiculosLeves = new LibComboBox(new Point(20, 260), new Size(300, 40));
-            modelosVeiculosLeves.Items.AddRange(new String[] { "Civic EXS", "Accord EXL", "Cruze LTZ", "HB20sx" });
+            IEnumerable<Model.VeiculoLeve> veiculosLeves = Controller.VeiculoLeve.GetVeiculosLeves();
+            List<string> listLeve = new List<string>();
+            foreach (Model.VeiculoLeve item in veiculosLeves)
+            {
+                listLeve.Add($"{item.Id} - {item.Marca} - {item.Modelo}");
+            }
+            modelosVeiculosLeves.Items.AddRange(listLeve.ToArray());
 
             modelosVeiculosPesados = new LibComboBox(new Point(20, 260), new Size(300, 40));
-            modelosVeiculosPesados.Items.AddRange(new String[] { "Volvo FH 540", "Scania R450", "Volvo FH 460", "Mercedes-Benz Actros 2651" });
+            IEnumerable<Model.VeiculoPesado> veiculosPesados = Controller.VeiculoPesado.GetVeiculoPesados();
+            List<string> listPesado = new List<string>();
+            foreach (Model.VeiculoPesado item in veiculosPesados)
+            {
+                listPesado.Add($"{item.Id} - {item.Marca} - {item.Modelo}");
+            }
+            modelosVeiculosPesados.Items.AddRange(listPesado.ToArray());
 
             btnSalvarCliente = new LibButton("Salvar", new Point(100, 300), new Size(100, 40));
             btnSalvarCliente.Click += new EventHandler(this.botaoSalvarCliente);
@@ -90,8 +77,8 @@ namespace Views
             this.Controls.Add(lblTitulo);
             this.Controls.Add(modelosVeiculosLeves);
             this.Controls.Add(modelosVeiculosPesados);
-            this.Controls.Add(lblNome);
-            this.Controls.Add(nome);
+            this.Controls.Add(lblId);
+            this.Controls.Add(idCliente);
             this.Controls.Add(lblDataLocacao);
             this.Controls.Add(dataLocacao);
             this.Controls.Add(tipo);
@@ -113,6 +100,8 @@ namespace Views
         }
         private void botaoSalvarCliente(object sender, EventArgs e)
         {
+            List<Model.VeiculoLeve> VeiculosLeves = new List<Model.VeiculoLeve>();
+            List<Model.VeiculoPesado> VeiculosPesados = new List<Model.VeiculoPesado>();
             DialogResult resultado = MessageBox.Show(
                 "Deseja realmente cadastrar a locação?",
                 "Confirmar Locação",
@@ -121,6 +110,33 @@ namespace Views
             );
             if (resultado == System.Windows.Forms.DialogResult.Yes)
             {
+                if (this.veiculoLeve.Checked)
+                {
+                    string combo = this.modelosVeiculosLeves.Text;
+                    int pos = combo.IndexOf("-");
+                    string strId = combo.Substring(0, pos - 1);
+                    int id = Convert.ToInt32(strId);
+                    Model.VeiculoLeve veiculo = Controller.VeiculoLeve.GetVeiculoLeve(id);
+                    VeiculosLeves.Add(veiculo);
+                }
+                if (this.veiculoPesado.Checked)
+                {
+                    string combo = this.modelosVeiculosPesados.Text;
+                    int pos = combo.IndexOf("-");
+                    string strId = combo.Substring(0, pos - 1);
+                    int id = Convert.ToInt32(strId);
+                    Model.VeiculoPesado veiculo = Controller.VeiculoPesado.GetVeiculoPesado(id);
+                    VeiculosPesados.Add(veiculo);
+                }
+
+                Controller.Locacao.NovaLocacao(
+                    this.idCliente.Text,
+                    this.dataLocacao.Text,
+                    VeiculosLeves,
+                    VeiculosPesados
+                );
+
+
                 MessageBox.Show("Locação Cadastrada!");
             }
             else if (resultado == System.Windows.Forms.DialogResult.No)

@@ -44,7 +44,7 @@ namespace Controller
         {
             int ListarVeiculosLeves = Model.VeiculoLeve.GetCount();
 
-            if (Id < 0 || ListarVeiculosLeves <= Id)
+            if (Id < 0 || ListarVeiculosLeves < Id)
             {
                 throw new Exception("Id informado é inválido.");
             }
