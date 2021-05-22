@@ -106,7 +106,19 @@ namespace Model
         {
             return GetClientes().Count();
         }
+        /*
+        public static IEnumerable<Cliente> GetClientes()
+        {
+            return from cliente in Context.Clientes select cliente;
+        }
 
+        
+        public static List<Cliente> ArrayClientes()
+        {
+            return (from cliente in Context.Clientes select cliente)
+                .ToList();
+        }
+        */
         public static void AddCliente(Cliente cliente)
         {
             Context db = new Context();

@@ -62,7 +62,7 @@ namespace Views
             List<string> listPesado = new List<string>();
             foreach (Model.VeiculoPesado item in veiculosPesados)
             {
-                listPesado.Add($"{item.Id} - {item.Marca} - {item.Modelo}");
+                listPesado.Add($"{item.Id} - {item.Marca} - {item.Modelo} - {item.Ano} - {item.Restricoes}");
             }
             modelosVeiculosPesados.Items.AddRange(listPesado.ToArray());
 

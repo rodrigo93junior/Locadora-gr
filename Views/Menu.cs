@@ -67,11 +67,13 @@ namespace Views
             btListarVeiculoLeve.Text = "Buscar Veículo Leve";
             btListarVeiculoLeve.Location = new Point(300, 230);
             btListarVeiculoLeve.Size = new Size(200, 40);
+            btListarVeiculoLeve.Click += new EventHandler(this.btListarVeiculoLeve);
 
             Button btListarVeiculoPesado = new Button();
             btListarVeiculoPesado.Text = "Buscar Veículo Pesado";
             btListarVeiculoPesado.Location = new Point(300, 280);
             btListarVeiculoPesado.Size = new Size(200, 40);
+            btListarVeiculoPesado.Click += new EventHandler(this.btListarVeiculoPesado);
 
             Label lblSubTituloEditar = new Label();
             lblSubTituloEditar.Text = "Editar:";
@@ -139,6 +141,16 @@ namespace Views
         {
             ListarCliente listarCliente = new ListarCliente();
             listarCliente.Show();
+        }
+        private void btListarVeiculoLeve(object sender, EventArgs e)
+        {
+            ListarVeiculosLeves listarVeiculosLeves = new ListarVeiculosLeves();
+            listarVeiculosLeves.Show();
+        }
+        private void btListarVeiculoPesado(object sender, EventArgs e)
+        {
+            ListarVeiculosPesados listarVeiculosPesados = new ListarVeiculosPesados();
+            listarVeiculosPesados.Show();
         }
     }
 }

@@ -32,6 +32,10 @@ namespace Controller
                 Restricoes
             );
         }
+        public static IEnumerable<Model.VeiculoPesado> ListarVeiculosPesados()
+        {
+            return Model.VeiculoPesado.GetVeiculosPesados();
+        }
         public static IEnumerable<Model.VeiculoPesado> GetVeiculoPesados()
         {
             return Model.VeiculoPesado.GetVeiculosPesados();

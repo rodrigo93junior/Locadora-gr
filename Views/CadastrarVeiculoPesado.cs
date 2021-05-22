@@ -36,7 +36,7 @@ namespace Views
 
             lblAno = new LibLabel("Ano:", new Point(20, 120), new Size(120, 15));
 
-            ano = new LibMaskedTextBox(new Point(20, 140), new Size(300, 40), "00/00/0000");
+            ano = new LibMaskedTextBox(new Point(20, 140), new Size(300, 40), "0000");
 
             lblPreco = new LibLabel("Preço:", new Point(20, 160), new Size(120, 15));
 
@@ -79,6 +79,13 @@ namespace Views
             );
             if (resultado == System.Windows.Forms.DialogResult.Yes)
             {
+                Controller.VeiculoPesado.AdicionarVeiculoPesado(
+                    this.marca.Text,
+                    this.modelo.Text,
+                    this.ano.Text,
+                    this.preco.Text,
+                    this.restricao.Text
+                );
                 MessageBox.Show("Veículo Cadastrado!");
             }
             else if (resultado == System.Windows.Forms.DialogResult.No)

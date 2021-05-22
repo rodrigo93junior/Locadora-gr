@@ -5406,19 +5406,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rodrigo.junior\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rodrigo.junior\\Documents\\Senac\\Locadora-gr\\Senac.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\Locadora-gr\\Senac.csproj",
       "projectName": "Senac",
-      "projectPath": "C:\\Users\\rodrigo.junior\\Documents\\Senac\\Locadora-gr\\Senac.csproj",
-      "packagesPath": "C:\\Users\\rodrigo.junior\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rodrigo.junior\\Documents\\Senac\\Locadora-gr\\obj\\",
+      "projectPath": "C:\\Users\\User\\Documents\\Locadora-gr\\Senac.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\Locadora-gr\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rodrigo.junior\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

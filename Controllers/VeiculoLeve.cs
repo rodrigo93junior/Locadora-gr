@@ -34,7 +34,10 @@ namespace Controller
                 Cor
             );
         }
-
+        public static IEnumerable<Model.VeiculoLeve> ListarVeiculosLeves()
+        {
+            return Model.VeiculoLeve.GetVeiculosLeves();
+        }
         public static IEnumerable<Model.VeiculoLeve> GetVeiculosLeves()
         {
             return Model.VeiculoLeve.GetVeiculosLeves();
