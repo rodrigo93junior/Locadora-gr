@@ -57,21 +57,27 @@ namespace Views
             lblSubTituloVisualizacao.Location = new Point(300, 140);
             lblSubTituloVisualizacao.Size = new Size(80, 20);
 
+            Button btListarLocacoes = new Button();
+            btListarLocacoes.Text = "Buscar Locacoes";
+            btListarLocacoes.Location = new Point(300, 180);
+            btListarLocacoes.Size = new Size(200, 40);
+            btListarLocacoes.Click += new EventHandler(this.btListarLocacoes);
+
             Button btListarCliente = new Button();
             btListarCliente.Text = "Buscar Cliente";
-            btListarCliente.Location = new Point(300, 180);
+            btListarCliente.Location = new Point(300, 230);
             btListarCliente.Size = new Size(200, 40);
             btListarCliente.Click += new EventHandler(this.btListarCliente);
 
             Button btListarVeiculoLeve = new Button();
             btListarVeiculoLeve.Text = "Buscar Veículo Leve";
-            btListarVeiculoLeve.Location = new Point(300, 230);
+            btListarVeiculoLeve.Location = new Point(300, 280);
             btListarVeiculoLeve.Size = new Size(200, 40);
             btListarVeiculoLeve.Click += new EventHandler(this.btListarVeiculoLeve);
 
             Button btListarVeiculoPesado = new Button();
             btListarVeiculoPesado.Text = "Buscar Veículo Pesado";
-            btListarVeiculoPesado.Location = new Point(300, 280);
+            btListarVeiculoPesado.Location = new Point(300, 330);
             btListarVeiculoPesado.Size = new Size(200, 40);
             btListarVeiculoPesado.Click += new EventHandler(this.btListarVeiculoPesado);
 
@@ -106,6 +112,7 @@ namespace Views
             this.Controls.Add(btCadastrarVeiculoPesado);
 
             this.Controls.Add(lblSubTituloVisualizacao);
+            this.Controls.Add(btListarLocacoes);
             this.Controls.Add(btListarCliente);
             this.Controls.Add(btListarVeiculoLeve);
             this.Controls.Add(btListarVeiculoPesado);
@@ -141,6 +148,11 @@ namespace Views
         {
             ListarCliente listarCliente = new ListarCliente();
             listarCliente.Show();
+        }
+        private void btListarLocacoes(object sender, EventArgs e)
+        {
+            ListarLocacoes listarLocacoes = new ListarLocacoes();
+            listarLocacoes.Show();
         }
         private void btListarVeiculoLeve(object sender, EventArgs e)
         {

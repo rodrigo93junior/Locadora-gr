@@ -17,7 +17,7 @@ namespace Views
 
             lblTitulo = new LibTituloLabel("Buscar Locações", new Point(180, 10), new Size(180, 40));
 
-            IEnumerable<Model.Locacao> locacoes = Controller.Locacao.ListarLocacoes ();
+            IEnumerable<Model.Locacao> locacoes = Controller.Locacao.GetLocacoes ();
             LibColuna[] colunas = new LibColuna[] {
                 new LibColuna ("ID Locação", HorizontalAlignment.Left),
                 new LibColuna ("ID Cliente", HorizontalAlignment.Left),
@@ -30,8 +30,8 @@ namespace Views
             
             foreach (Model.Locacao locacao in locacoes)
             {
-                ListViewItem item = new ListViewItem(locacoes.Id.ToString());
-                item.SubItems.Add(locacao.IdCliente);
+                ListViewItem item = new ListViewItem(locacao.Id.ToString());
+                item.SubItems.Add(locacao.IdCliente.ToString());
                 item.SubItems.Add(String.Format("{0:d}", locacao.DataLocacao));
                 item.SubItems.Add(locacao.VeiculosLeves);
                 item.SubItems.Add(locacao.VeiculosPesados);
