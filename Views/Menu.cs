@@ -1,7 +1,8 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
-
+using System.Collections.Generic;
+using Views.Lib;
 
 namespace Views
 {
@@ -90,6 +91,7 @@ namespace Views
             btEditarCliente.Text = "Editar Cliente";
             btEditarCliente.Location = new Point(20, 420);
             btEditarCliente.Size = new Size(200, 40);
+            btEditarCliente.Click += new EventHandler(this.btEditarClienteClick);
 
             Button btEditarVeiculoLeve = new Button();
             btEditarVeiculoLeve.Text = "Editar Veículo Leve";
@@ -163,6 +165,26 @@ namespace Views
         {
             ListarVeiculosPesados listarVeiculosPesados = new ListarVeiculosPesados();
             listarVeiculosPesados.Show();
+        }
+
+        private void btEditarClienteClick(object sender, EventArgs e) {
+            string id = "";
+            IEnumerable<Model.Cliente> clientes = Controller.Cliente.ListarClientes();
+            List<string> listaClientes = new List<string>();
+            foreach (Model.Cliente item in clientes)
+            {
+                listaClientes.Add($"{item.Id} - {item.Nome} - {item.DataNascimento} - {item.Cpf} - {item.DiasRetorno}");
+            }
+            new InputBox(
+                "Alterar o Cliente",
+                "Informe o ID do Cliente",
+                listaClientes,
+                ref id
+            );
+            if(!id.Equals("")) {
+                CadastrarCliente cadastrarCliente = new CadastrarCliente(id);
+                cadastrarCliente.Show();
+            }
         }
     }
 }

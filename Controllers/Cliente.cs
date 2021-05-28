@@ -34,7 +34,7 @@ namespace Controller
 
             return new Model.Cliente(
                 Nome,
-                DataNascimento,
+                Convert.ToDateTime(DataNascimento),
                 Cpf,
                 Convert.ToInt32(DiasRetorno)
             );
@@ -63,6 +63,13 @@ namespace Controller
                 default:
                     throw new Exception("Operação inválida");
             }
+        }
+
+        public static Model.Cliente AtualizarClientes(
+            Model.Cliente cliente
+        )
+        {
+            return Model.Cliente.AtualizarClientes(cliente);
         }
 
         public static IEnumerable<Model.Cliente> ListarClientes()

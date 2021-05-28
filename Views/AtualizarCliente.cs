@@ -15,40 +15,32 @@ namespace Views
         LibComboBox combo;
         LibButton btnSalvarCliente;
         LibButton btnCancelar;
-    public AtualizarCliente()
+        public AtualizarCliente()
         {
-            this.Text = "Alterar cadastro de Cliente";
-
-            lblTitulo = new LibTituloLabel("Alterar cadastro de Cliente", new Point(180, 10), new Size(180, 40));
-            lblId = new LibLabel("Id:", new Point(20, 30), new Size(120, 15));
-            id = new LibTextBox(new Point(20, 50), new Size(300, 40));
-            int ConvertId = Convert.ToInt32(id);
-             IEnumerable<Model.Cliente> clientes = Model.Cliente.GetCliente(int Id);
-            try
-            {
-               IEnumerable<Model.Cliente> clientes = Controller.Cliente.ListarClientes ();
-            LibColuna[] colunas = new LibColuna[] {
-                new LibColuna ("ID", HorizontalAlignment.Left),
-                new LibColuna ("Nome Completo", HorizontalAlignment.Left),
-                new LibColuna ("Data Nascimento", HorizontalAlignment.Left),
-                new LibColuna ("CPF", HorizontalAlignment.Left),
-                new LibColuna ("Dias Devolção", HorizontalAlignment.Left)
-            };
-            
-            listagemCliente = new LibListView(25, 25, 400, 350, colunas);
-            catch (Exception error)
-            {
-                throw error;
-            }
-
+            string id = "";
+            IEnumerable<Model.Cliente> clientes = Controller.Cliente.ListarClientes();
             List<string> listaClientes = new List<string>();
             foreach (Model.Cliente item in clientes)
             {
                 listaClientes.Add($"{item.Id} - {item.Nome} - {item.DataNascimento} - {item.Cpf} - {item.DiasRetorno}");
             }
-            string[] options = listaClientes.ToArray();
+            new InputBox(
+                "Alterar o Cliente",
+                "Informe o ID do Cliente",
+                listaClientes,
+                ref id
+            );
+            /*this.Text = "Alterar cadastro de Cliente";
 
-            combo = new LibComboBox(new Point(20, 260), new Size(300, 40));
+            lblTitulo = new LibTituloLabel("Alterar cadastro de Cliente", new Point(180, 10), new Size(180, 40));
+            lblId = new LibLabel("Id:", new Point(20, 30), new Size(120, 15));
+            id = new LibTextBox(new Point(20, 50), new Size(300, 40));
+           
+            List<string> listaClientes = new List<string>();
+            foreach (Model.Cliente item in clientes)
+            {
+                listaClientes.Add($"{item.Id} - {item.Nome} - {item.DataNascimento} - {item.Cpf} - {item.DiasRetorno}");
+            }
 
             btnSalvarCliente = new LibButton("Salvar", new Point(100, 300), new Size(100, 40));
             btnSalvarCliente.Click += new EventHandler(this.botaoSalvarCliente);
@@ -59,7 +51,7 @@ namespace Views
             this.Size = new Size(540, 400);
             this.Controls.Add(lblTitulo);
             this.Controls.Add(lblId);
-            this.Controls.Add(id);
+            this.Controls.Add(id);*/
             
         }
          private void botaoSalvarCliente(object sender, EventArgs e)

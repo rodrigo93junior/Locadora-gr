@@ -60,6 +60,17 @@ namespace Model
             return cliente;
         }
 
+        public static Cliente AtualizarClientes(
+            Cliente cliente
+        )
+        {
+            Context db = new Context();
+            db.Clientes.Update(cliente);
+            db.SaveChanges();
+            return cliente;
+        }
+
+
 
 
         public override string ToString()

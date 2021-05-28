@@ -33,8 +33,8 @@ namespace Views
                 ListViewItem item = new ListViewItem(locacao.Id.ToString());
                 item.SubItems.Add(locacao.IdCliente.ToString());
                 item.SubItems.Add(String.Format("{0:d}", locacao.DataLocacao));
-                item.SubItems.Add(locacao.VeiculosLeves);
-                item.SubItems.Add(locacao.VeiculosPesados);
+                // item.SubItems.Add(locacao.VeiculosLeves);
+                // item.SubItems.Add(locacao.VeiculosPesados);
                 listargemlocacoes.Items.Add(item);
             }
 

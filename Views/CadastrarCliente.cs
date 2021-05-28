@@ -4,37 +4,11 @@ using System.Windows.Forms;
 using System.Drawing;
 using Views.Lib;
 
-/*
- 0         1         2         3         4         5         6         7         8         9
-  0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-  +-----------------------------------------------------------------------------------------+
-00|                                                                                         |
-01|                                                                                         |
-02|                                                                                         |
-03|                                                                                         |
-04|                                                                                         |
-05|                                                                                         |
-06|                                                                                         |
-07|                                                                                         |
-08|                                                                                         |
-09|                                                                                         |
-10|                                                                                         |
-11|                                                                                         |
-12|                                                                                         |
-13|                                                                                         |
-14|                                                                                         |
-15|                                                                                         |
-16|                                                                                         |
-17|                                                                                         |
-18|                                                                                         |
-19|                                                                                         |
-20|                                                                                         |
-  +-----------------------------------------------------------------------------------------+
-*/
 namespace Views
 {
     public class CadastrarCliente : Form
     {
+        Model.Cliente cliente = new Model.Cliente();
         LibTituloLabel lblTitulo;
         LibLabel lblNome;
         LibTextBox nome;
@@ -49,7 +23,7 @@ namespace Views
         LibRadioButton generoMasculino;
         LibButton btnSalvarCliente;
         LibButton btnCancelar;
-        public CadastrarCliente()
+        public CadastrarCliente(string id = "")
         {
             this.Text = "Cadastro de Cliente";
 
@@ -86,6 +60,13 @@ namespace Views
             btnCancelar = new LibButton("Cancelar", new Point(200, 300), new Size(100, 40));
             btnCancelar.Click += new EventHandler(this.botaoCancelar);
 
+            if (!id.Equals("")) {
+                this.cliente = Controller.Cliente.GetCliente(Convert.ToInt32(id));
+                this.nome.Text = cliente.Nome;
+                this.dataNascimento.Text = cliente.DataNascimento.ToString();
+                this.cpf.Text = cliente.Cpf;
+                this.diasRetorno.Text = cliente.DiasRetorno.ToString();
+            }
 
             this.Size = new Size(540, 400);
             this.Controls.Add(lblTitulo);
@@ -113,12 +94,20 @@ namespace Views
             if (resultado == System.Windows.Forms.DialogResult.Yes)
             {
                 MessageBox.Show("Usuário Cadastrado!");
-                Controller.Cliente.NovoCliente(
-                    this.nome.Text,
-                    this.dataNascimento.Text,
-                    this.cpf.Text,
-                    this.diasRetorno.Text
-                );
+                if (this.cliente.Id > 0) {
+                    this.cliente.Nome = this.nome.Text;
+                    this.cliente.DataNascimento = Convert.ToDateTime(this.dataNascimento.Text);
+                    this.cliente.Cpf = this.cpf.Text;
+                    this.cliente.DiasRetorno = Convert.ToInt32(this.diasRetorno.Text);
+                    Controller.Cliente.AtualizarClientes(this.cliente);
+                } else {
+                    Controller.Cliente.NovoCliente(
+                        this.nome.Text,
+                        this.dataNascimento.Text,
+                        this.cpf.Text,
+                        this.diasRetorno.Text
+                    );
+                }
             }
             else if (resultado == System.Windows.Forms.DialogResult.No)
             {
