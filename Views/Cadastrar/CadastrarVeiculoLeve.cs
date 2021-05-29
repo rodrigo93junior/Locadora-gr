@@ -7,6 +7,7 @@ namespace Views
 {
     public class CadastrarVeiculoLeve : Form
     {
+        Model.VeiculoLeve veiculoLeve = new Model.VeiculoLeve();
         LibTituloLabel lblTitulo;
         LibLabel lblMarca;
         LibTextBox marca;
@@ -20,7 +21,7 @@ namespace Views
         LibTextBox cor;
         LibButton btnSalvarVeiculoLeve;
         LibButton btnCancelar;
-        public CadastrarVeiculoLeve()
+        public CadastrarVeiculoLeve(string id = "")
         {
             this.Text = "Cadastro de Veículo Leve";
 
@@ -54,6 +55,14 @@ namespace Views
             btnCancelar = new LibButton("Cancelar", new Point(200, 300), new Size(100, 40));
             btnCancelar.Click += new EventHandler(this.botaoCancelar);
 
+            if (!id.Equals("")) {
+                this.veiculoLeve = Controller.VeiculoLeve.GetVeiculoLeve(Convert.ToInt32(id));
+                this.marca.Text = veiculoLeve.Marca;
+                this.modelo.Text = veiculoLeve.Modelo.ToString();
+                this.ano.Text = veiculoLeve.Ano.ToString();
+                this.preco.Text = veiculoLeve.Preco.ToString();
+                this.cor.Text = veiculoLeve.Cor;
+            }
 
             this.Size = new Size(540, 400);
             this.Controls.Add(lblTitulo);
@@ -81,6 +90,15 @@ namespace Views
             );
             if (resultado == System.Windows.Forms.DialogResult.Yes)
             {
+                MessageBox.Show("Usuário Cadastrado!");
+                if (this.veiculoLeve.Id > 0) {
+                    this.veiculoLeve.Marca = this.marca.Text;
+                    this.veiculoLeve.Modelo = this.modelo.Text;
+                    this.veiculoLeve.Ano = Convert.ToInt32(this.ano.Text);
+                    this.veiculoLeve.Preco = Convert.ToInt32(this.preco.Text);
+                    this.veiculoLeve.Cor = this.cor.Text;
+                    Controller.VeiculoLeve.AtualizarVeiculoLeve(this.veiculoLeve);
+                } else {
                 Controller.VeiculoLeve.AdicionarVeiculoLeve(
                     this.marca.Text,
                     this.modelo.Text,
@@ -89,6 +107,7 @@ namespace Views
                     this.cor.Text
                 );
                 MessageBox.Show("Veículo Cadastrado!");
+                }
             }
             else if (resultado == System.Windows.Forms.DialogResult.No)
             {

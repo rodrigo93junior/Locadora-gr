@@ -15,7 +15,7 @@ namespace Views
 
             pbImagem = new PictureBox();
             pbImagem.Size = new Size(300, 120);
-            pbImagem.Location = new Point(130,3);
+            pbImagem.Location = new Point(130, 3);
             pbImagem.Load("gr.jpg");
             pbImagem.SizeMode = PictureBoxSizeMode.Zoom;
 
@@ -82,26 +82,60 @@ namespace Views
             btListarVeiculoPesado.Size = new Size(200, 40);
             btListarVeiculoPesado.Click += new EventHandler(this.btListarVeiculoPesado);
 
-            Label lblSubTituloEditar = new Label();
-            lblSubTituloEditar.Text = "Editar:";
-            lblSubTituloEditar.Location = new Point(20, 390);
-            lblSubTituloEditar.Size = new Size(80, 20);
+            Label lblSubTituloAtualizar = new Label();
+            lblSubTituloAtualizar.Text = "Atualização:";
+            lblSubTituloAtualizar.Location = new Point(20, 390);
+            lblSubTituloAtualizar.Size = new Size(80, 20);
 
-            Button btEditarCliente = new Button();
-            btEditarCliente.Text = "Editar Cliente";
-            btEditarCliente.Location = new Point(20, 420);
-            btEditarCliente.Size = new Size(200, 40);
-            btEditarCliente.Click += new EventHandler(this.btEditarClienteClick);
+            Button btAtualizarCliente = new Button();
+            btAtualizarCliente.Text = "Atualizar Cliente";
+            btAtualizarCliente.Location = new Point(20, 420);
+            btAtualizarCliente.Size = new Size(200, 40);
+            btAtualizarCliente.Click += new EventHandler(this.btAtualizarClienteClick);
 
-            Button btEditarVeiculoLeve = new Button();
-            btEditarVeiculoLeve.Text = "Editar Veículo Leve";
-            btEditarVeiculoLeve.Location = new Point(20, 470);
-            btEditarVeiculoLeve.Size = new Size(200, 40);
+            Button btAtualizarVeiculoLeve = new Button();
+            btAtualizarVeiculoLeve.Text = "Atualizar Veículo Leve";
+            btAtualizarVeiculoLeve.Location = new Point(20, 470);
+            btAtualizarVeiculoLeve.Size = new Size(200, 40);
+            btAtualizarVeiculoLeve.Click += new EventHandler(this.btAtualizarVeiculoleve);
 
-            Button btEditarVeiculoPesado = new Button();
-            btEditarVeiculoPesado.Text = "Editar Veículo Pesado";
-            btEditarVeiculoPesado.Location = new Point(20, 520);
-            btEditarVeiculoPesado.Size = new Size(200, 40);
+            Button btAtualizarVeiculoPesado = new Button();
+            btAtualizarVeiculoPesado.Text = "Atualizar Veículo Pesado";
+            btAtualizarVeiculoPesado.Location = new Point(20, 520);
+            btAtualizarVeiculoPesado.Size = new Size(200, 40);
+            btAtualizarVeiculoPesado.Click += new EventHandler(this.btAtualizarVeiculoPesado);
+
+            Button btAtualizarLocacao = new Button();
+            btAtualizarLocacao.Text = "Atualizar Locação";
+            btAtualizarLocacao.Location = new Point(20, 570);
+            btAtualizarLocacao.Size = new Size(200, 40);
+            btAtualizarLocacao.Click += new EventHandler(this.btAtualizarLocacao);
+
+            Label lblSubTituloRemover = new Label();
+            lblSubTituloRemover.Text = "Remover";
+            lblSubTituloRemover.Location = new Point(300, 390);
+            lblSubTituloRemover.Size = new Size(80, 20);
+
+            Button btRemoverCliente = new Button();
+            btRemoverCliente.Text = "Remover Cliente";
+            btRemoverCliente.Location = new Point(300, 420);
+            btRemoverCliente.Size = new Size(200, 40);
+            btRemoverCliente.Click += new EventHandler(this.btRemoverClienteClick);
+
+            Button btRemoverVeiculoLeve = new Button();
+            btRemoverVeiculoLeve.Text = "Remover Veículo Leve";
+            btRemoverVeiculoLeve.Location = new Point(300, 470);
+            btRemoverVeiculoLeve.Size = new Size(200, 40);
+
+            Button btRemoverVeiculoPesado = new Button();
+            btRemoverVeiculoPesado.Text = "Remover Veículo Pesado";
+            btRemoverVeiculoPesado.Location = new Point(300, 520);
+            btRemoverVeiculoPesado.Size = new Size(200, 40);
+
+            Button btRemoverLocacao = new Button();
+            btRemoverLocacao.Text = "Remover Locação";
+            btRemoverLocacao.Location = new Point(300, 570);
+            btRemoverLocacao.Size = new Size(200, 40);
 
 
             this.Size = new Size(600, 700);
@@ -119,10 +153,17 @@ namespace Views
             this.Controls.Add(btListarVeiculoLeve);
             this.Controls.Add(btListarVeiculoPesado);
 
-            this.Controls.Add(lblSubTituloEditar);
-            this.Controls.Add(btEditarCliente);
-            this.Controls.Add(btEditarVeiculoLeve);
-            this.Controls.Add(btEditarVeiculoPesado);
+            this.Controls.Add(lblSubTituloAtualizar);
+            this.Controls.Add(btAtualizarCliente);
+            this.Controls.Add(btAtualizarVeiculoLeve);
+            this.Controls.Add(btAtualizarVeiculoPesado);
+            this.Controls.Add(btAtualizarLocacao);
+
+            this.Controls.Add(lblSubTituloRemover);
+            this.Controls.Add(btRemoverCliente);
+            this.Controls.Add(btRemoverVeiculoLeve);
+            this.Controls.Add(btRemoverVeiculoPesado);
+            this.Controls.Add(btRemoverLocacao);
         }
 
         private void btCadastrarCliente(object sender, EventArgs e)
@@ -145,7 +186,7 @@ namespace Views
             CadastrarVeiculoPesado cadastrarVeiculoPesado = new CadastrarVeiculoPesado();
             cadastrarVeiculoPesado.Show();
         }
-    
+
         private void btListarCliente(object sender, EventArgs e)
         {
             ListarCliente listarCliente = new ListarCliente();
@@ -167,24 +208,36 @@ namespace Views
             listarVeiculosPesados.Show();
         }
 
-        private void btEditarClienteClick(object sender, EventArgs e) {
-            string id = "";
-            IEnumerable<Model.Cliente> clientes = Controller.Cliente.ListarClientes();
-            List<string> listaClientes = new List<string>();
-            foreach (Model.Cliente item in clientes)
-            {
-                listaClientes.Add($"{item.Id} - {item.Nome} - {item.DataNascimento} - {item.Cpf} - {item.DiasRetorno}");
-            }
-            new InputBox(
-                "Alterar o Cliente",
-                "Informe o ID do Cliente",
-                listaClientes,
-                ref id
-            );
-            if(!id.Equals("")) {
-                CadastrarCliente cadastrarCliente = new CadastrarCliente(id);
-                cadastrarCliente.Show();
-            }
+        private void btAtualizarClienteClick(object sender, EventArgs e)
+        {
+            AtualizarClientes atualizarClientes = new AtualizarClientes();
+            atualizarClientes.Show();
+        }
+        private void btAtualizarVeiculoleve(object sender, EventArgs e)
+        {
+            AtualizarVeiculoLeve atualizarVeiculoLeve = new AtualizarVeiculoLeve();
+            atualizarVeiculoLeve.Show();
+        }
+        private void btAtualizarVeiculoPesado(object sender, EventArgs e)
+        {
+            AtualizarVeiculoPesado atualizarVeiculoPesado = new AtualizarVeiculoPesado();
+            atualizarVeiculoPesado.Show();
+        }
+        private void btAtualizarLocacao(object sender, EventArgs e)
+        {
+            AtualizarLocacao atualizarLocacao = new AtualizarLocacao();
+            atualizarLocacao.Show();
+        }
+
+        private void btRemoverClienteClick(object sender, EventArgs e)
+        {
+            RemoverClientes removerClientes = new RemoverClientes();
+            removerClientes.Show();
+        }
+        private void btRemoverLocacaoClick(object sender, EventArgs e)
+        {
+            RemoverLocacao removerLocaRemoverLocacao = new RemoverLocacao();
+            removerLocaRemoverLocacao.Show();
         }
     }
 }

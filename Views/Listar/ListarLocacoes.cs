@@ -17,7 +17,7 @@ namespace Views
 
             lblTitulo = new LibTituloLabel("Buscar Locações", new Point(180, 10), new Size(180, 40));
 
-            IEnumerable<Model.Locacao> locacoes = Controller.Locacao.GetLocacoes ();
+            IEnumerable<Model.Locacao> locacoes = Controller.Locacao.GetLocacao ();
             LibColuna[] colunas = new LibColuna[] {
                 new LibColuna ("ID Locação", HorizontalAlignment.Left),
                 new LibColuna ("ID Cliente", HorizontalAlignment.Left),

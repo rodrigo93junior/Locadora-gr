@@ -23,6 +23,7 @@ namespace Views
                 new LibColuna ("Nome Completo", HorizontalAlignment.Left),
                 new LibColuna ("Data Nascimento", HorizontalAlignment.Left),
                 new LibColuna ("CPF", HorizontalAlignment.Left),
+                new LibColuna ("Genero", HorizontalAlignment.Left),
                 new LibColuna ("Dias Devolção", HorizontalAlignment.Left)
             };
             
@@ -34,6 +35,7 @@ namespace Views
                 item.SubItems.Add(cliente.Nome);
                 item.SubItems.Add(String.Format("{0:d}", cliente.DataNascimento));
                 item.SubItems.Add(cliente.Cpf);
+                item.SubItems.Add(cliente.Genero);
                 item.SubItems.Add(cliente.DiasRetorno.ToString());
                 listagemCliente.Items.Add(item);
             }

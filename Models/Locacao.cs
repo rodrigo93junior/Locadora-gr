@@ -103,7 +103,7 @@ namespace Model
             return HashCode.Combine (this.Id);
         }
 
-        public static IEnumerable<Locacao> GetLocacoes () {
+        public static IEnumerable<Locacao> GetLocacao () {
             Context db = new Context();
             return from Locacao in db.Locacoes select Locacao;
         }
@@ -111,6 +111,35 @@ namespace Model
         public static int GetCount(int IdCliente) {
             Context db = new Context();
             return (from locacao in db.Locacoes where locacao.IdCliente == IdCliente select locacao).Count();
+        }
+        
+        public static Locacao GetLocacao(int Id)
+        {
+
+            Context db = new Context();
+            IEnumerable<Locacao> query = from locacao in db.Locacoes where locacao.Id == Id select locacao;
+
+            return query.First();
+
+        }
+        public static Locacao AtualizarLocacoes(
+            Locacao locacao
+        )
+        {
+            Context db = new Context();
+            db.Locacoes.Update(locacao);
+            db.SaveChanges();
+            return locacao;
+        }
+        public static void RemoverLocacao(int Id) {
+            Locacao locacao = GetLocacao(Id);
+            Context db = new Context();
+            db.Locacoes.Remove(locacao);
+            db.SaveChanges();
+        }
+        public static int GetCount()
+        {
+            return GetLocacao().Count();
         }
     }
 }

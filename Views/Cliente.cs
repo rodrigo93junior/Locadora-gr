@@ -13,11 +13,13 @@ namespace Views
             string DataNascimento = Console.ReadLine();
             Console.WriteLine("Digite o CPF da pessoa: ");
             string Cpf = Console.ReadLine();
+            Console.WriteLine("Digite o Genero: ");
+            string Genero = Console.ReadLine();
             Console.WriteLine("Digite o Número de Dias para Devolução: ");
             string DiasRetorno = Console.ReadLine();
             try
             {
-                Controller.Cliente.NovoCliente(Nome, DataNascimento, Cpf, DiasRetorno);
+                Controller.Cliente.NovoCliente(Nome, DataNascimento, Cpf, Genero, DiasRetorno);
             }
             catch (Exception e)
             {

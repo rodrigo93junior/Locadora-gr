@@ -11,6 +11,7 @@ namespace Controller
             string Nome,
             string StringDataNascimento,
             string Cpf,
+            string Genero,
             string DiasRetorno
         )
         {
@@ -36,6 +37,7 @@ namespace Controller
                 Nome,
                 Convert.ToDateTime(DataNascimento),
                 Cpf,
+                Genero,
                 Convert.ToInt32(DiasRetorno)
             );
         }
@@ -72,6 +74,7 @@ namespace Controller
             return Model.Cliente.AtualizarClientes(cliente);
         }
 
+
         public static IEnumerable<Model.Cliente> ListarClientes()
         {
             return Model.Cliente.GetClientes();
@@ -87,6 +90,18 @@ namespace Controller
             }
 
             return Model.Cliente.GetCliente(Id);
+        }
+        public static void RemoverClientes(string StringId)
+        {
+            int Id = Convert.ToInt32(StringId);
+            try
+            {
+                Model.Cliente.RemoverClientes(Id);
+            }
+            catch
+            {
+                throw new Exception("Não foi permitido concluir a exclusão ou ID inválido ");
+            }
         }
     }
 }

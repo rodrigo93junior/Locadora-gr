@@ -7,6 +7,7 @@ namespace Views
 {
     public class CadastrarVeiculoPesado : Form
     {
+        Model.VeiculoPesado veiculoPesado = new Model.VeiculoPesado();
         LibTituloLabel lblTitulo;
         LibLabel lblMarca;
         LibTextBox marca;
@@ -20,7 +21,7 @@ namespace Views
         LibTextBox restricao;
         LibButton btnSalvarVeiculoPesado;
         LibButton btnCancelar;
-        public CadastrarVeiculoPesado()
+        public CadastrarVeiculoPesado(string id = "")
         {
             this.Text = "Cadastro de Veículo Pesado";
 
@@ -52,6 +53,15 @@ namespace Views
             btnCancelar = new LibButton("Cancelar", new Point(200, 300), new Size(100, 40));
             btnCancelar.Click += new EventHandler(this.botaoCancelar);
 
+            if (!id.Equals(""))
+            {
+                this.veiculoPesado = Controller.VeiculoPesado.GetVeiculoPesado(Convert.ToInt32(id));
+                this.marca.Text = veiculoPesado.Marca;
+                this.modelo.Text = veiculoPesado.Modelo.ToString();
+                this.ano.Text = veiculoPesado.Ano.ToString();
+                this.preco.Text = veiculoPesado.Preco.ToString();
+                this.restricao.Text = veiculoPesado.Restricoes;
+            }
 
             this.Size = new Size(540, 400);
             this.Controls.Add(lblTitulo);
@@ -79,43 +89,53 @@ namespace Views
             );
             if (resultado == System.Windows.Forms.DialogResult.Yes)
             {
-                Controller.VeiculoPesado.AdicionarVeiculoPesado(
-                    this.marca.Text,
-                    this.modelo.Text,
-                    this.ano.Text,
-                    this.preco.Text,
-                    this.restricao.Text
-                );
-                MessageBox.Show("Veículo Cadastrado!");
+                MessageBox.Show("Usuário Cadastrado!");
+                if (this.veiculoPesado.Id > 0) {
+                    this.veiculoPesado.Marca = this.marca.Text;
+                    this.veiculoPesado.Modelo = this.modelo.Text;
+                    this.veiculoPesado.Ano = Convert.ToInt32(this.ano.Text);
+                    this.veiculoPesado.Preco = Convert.ToInt32(this.preco.Text);
+                    this.veiculoPesado.Restricoes = this.restricao.Text;
+                    Controller.VeiculoPesado.AtualizarVeiculoPesado(this.veiculoPesado);
+                } else {
+                    Controller.VeiculoPesado.AdicionarVeiculoPesado(
+                        this.marca.Text,
+                        this.modelo.Text,
+                        this.ano.Text,
+                        this.preco.Text,
+                        this.restricao.Text
+                    );
+                    MessageBox.Show("Veículo Cadastrado!");
+                }
             }
             else if (resultado == System.Windows.Forms.DialogResult.No)
-            {
-                MessageBox.Show("Veículo não cadastrado");
+                {
+                    MessageBox.Show("Veículo não cadastrado");
+                }
+                else
+                {
+                    MessageBox.Show("Opção Incorreta");
+                }
+                this.Close();
             }
-            else
+            private void botaoCancelar(object sender, EventArgs e)
             {
-                MessageBox.Show("Opção Incorreta");
-            }
-            this.Close();
-        }
-        private void botaoCancelar(object sender, EventArgs e)
-        {
-            DialogResult resultado = MessageBox.Show(
-                "Deseja realmente cancelar?",
-                "Confirmar Cadastro",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-            if (resultado == System.Windows.Forms.DialogResult.Yes)
-            {
-                MessageBox.Show("Veículo não cadastrado");
-            }
-            else
-            {
-                MessageBox.Show("Opção Invalida!");
-            }
+                DialogResult resultado = MessageBox.Show(
+                    "Deseja realmente cancelar?",
+                    "Confirmar Cadastro",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+                if (resultado == System.Windows.Forms.DialogResult.Yes)
+                {
+                    MessageBox.Show("Veículo não cadastrado");
+                }
+                else
+                {
+                    MessageBox.Show("Opção Invalida!");
+                }
 
-            this.Close();
+                this.Close();
+            }
         }
     }
-}

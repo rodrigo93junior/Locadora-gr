@@ -12,7 +12,8 @@ namespace Model
         [Required]
         public string Nome { set; get; } // Nome
         public DateTime DataNascimento { set; get; } // Data de Nascimento
-        public string Cpf { set; get; } // C.P.F.
+        public string Cpf { set; get; } // CPF
+        public string Genero { set; get; } // Genero
         public int DiasRetorno { set; get; } // Dias para Devolução
 
         public Cliente()
@@ -23,6 +24,7 @@ namespace Model
             string Nome,
             DateTime DataNascimento,
             string Cpf,
+            string Genero,
             int DiasRetorno
         )
         {
@@ -69,9 +71,12 @@ namespace Model
             db.SaveChanges();
             return cliente;
         }
-
-
-
+        public static void RemoverClientes(int Id) {
+            Cliente cliente = GetCliente(Id);
+            Context db = new Context();
+            db.Clientes.Remove(cliente);
+            db.SaveChanges();
+        }
 
         public override string ToString()
         {

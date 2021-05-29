@@ -32,6 +32,9 @@ namespace Senac.Migrations
                     b.Property<int>("DiasRetorno")
                         .HasColumnType("int");
 
+                    b.Property<string>("Genero")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

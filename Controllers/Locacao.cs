@@ -36,12 +36,41 @@ namespace Controller
         }
         public static IEnumerable<Model.Locacao> ListarLocacoes()
         {
-            return Model.Locacao.GetLocacoes();
+            return Model.Locacao.GetLocacao();
         }
 
-        public static IEnumerable<Model.Locacao> GetLocacoes()
+        public static IEnumerable<Model.Locacao> GetLocacao()
         {
-            return Model.Locacao.GetLocacoes();
+            return Model.Locacao.GetLocacao();
+        }
+        public static Model.Locacao GetLocacao(int Id)
+        {
+            int ListarVeiculosLeves = Model.Locacao.GetCount();
+
+            if (Id < 0 || ListarVeiculosLeves < Id)
+            {
+                throw new Exception("Id informado é inválido.");
+            }
+
+            return Model.Locacao.GetLocacao(Id);
+        }
+        public static Model.Locacao AtualizarLocacao(
+            Model.Locacao locacao
+        )
+        {
+            return Model.Locacao.AtualizarLocacoes(locacao);
+        }
+        public static void RemoverLocacao(string StringId)
+        {
+            int Id = Convert.ToInt32(StringId);
+            try
+            {
+                Model.Locacao.RemoverLocacao(Id);
+            }
+            catch
+            {
+                throw new Exception("Não foi permitido concluir a exclusão ou ID inválido ");
+            }
         }
     }
 }

@@ -72,7 +72,7 @@ namespace Views
 
         public static void ListarLocacao()
         {
-            foreach (Model.Locacao locacao in Controller.Locacao.GetLocacoes())
+            foreach (Model.Locacao locacao in Controller.Locacao.GetLocacao())
             {
                 Console.WriteLine("---------------------------");
                 Console.WriteLine(locacao);

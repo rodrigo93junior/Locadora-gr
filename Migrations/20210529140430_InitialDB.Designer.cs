@@ -9,7 +9,7 @@ using Repositorio;
 namespace Senac.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210325224105_InitialDB")]
+    [Migration("20210529140430_InitialDB")]
     partial class InitialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,11 @@ namespace Senac.Migrations
                     b.Property<int>("DiasRetorno")
                         .HasColumnType("int");
 
+                    b.Property<string>("Genero")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
@@ -48,9 +52,6 @@ namespace Senac.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClienteId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DataLocacao")
                         .HasColumnType("datetime(6)");
 
@@ -59,15 +60,14 @@ namespace Senac.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
-
                     b.ToTable("Locacoes");
                 });
 
             modelBuilder.Entity("Model.LocacaoVeiculoLeve", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<int>("IdLocacao")
                         .HasColumnType("int");
@@ -75,17 +75,7 @@ namespace Senac.Migrations
                     b.Property<int>("IdVeiculoLeve")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LocacaoId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("VeiculoLeveId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("LocacaoId");
-
-                    b.HasIndex("VeiculoLeveId");
 
                     b.ToTable("LocacaoVeiculosLeves");
                 });
@@ -102,17 +92,7 @@ namespace Senac.Migrations
                     b.Property<int>("IdVeiculoPesado")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LocacaoId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("VeiculoPesadoId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("LocacaoId");
-
-                    b.HasIndex("VeiculoPesadoId");
 
                     b.ToTable("LocacaoVeiculosPesados");
                 });
@@ -167,35 +147,6 @@ namespace Senac.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("VeiculosPesados");
-                });
-
-            modelBuilder.Entity("Model.Locacao", b =>
-                {
-                    b.HasOne("Model.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId");
-                });
-
-            modelBuilder.Entity("Model.LocacaoVeiculoLeve", b =>
-                {
-                    b.HasOne("Model.Locacao", "Locacao")
-                        .WithMany()
-                        .HasForeignKey("LocacaoId");
-
-                    b.HasOne("Model.VeiculoLeve", "VeiculoLeve")
-                        .WithMany()
-                        .HasForeignKey("VeiculoLeveId");
-                });
-
-            modelBuilder.Entity("Model.LocacaoVeiculoPesado", b =>
-                {
-                    b.HasOne("Model.Locacao", "Locacao")
-                        .WithMany()
-                        .HasForeignKey("LocacaoId");
-
-                    b.HasOne("Model.VeiculoPesado", "VeiculoPesado")
-                        .WithMany()
-                        .HasForeignKey("VeiculoPesadoId");
                 });
 #pragma warning restore 612, 618
         }

@@ -33,5 +33,40 @@ namespace Views
                 this.Minimum = Minimum;
             }
         }
+        public class LibsComboBox : ComboBox
+        {
+            public LibsComboBox(
+                Point Location,
+                Size Size,
+                string[] options
+            )
+            {
+                this.Location = Location;
+                this.Size = Size;
+                foreach (string item in options)
+                {
+                    this.Items.Add(item);
+                }
+            }
+
+        }
+        public class LibsCBBox : ComboBox
+        {
+            public LibsCBBox(
+                Point Location,
+                Size Size,
+                string[] opt
+
+            )
+            {
+                this.Location = Location;
+                this.Size = Size;
+                foreach (string item in opt)
+                {
+                    this.Items.Add(item);
+                }
+
+            }
+        }
     }
 }

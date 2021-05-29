@@ -44,6 +44,7 @@ namespace Views
             genero = new LibGroupBox("Genero", new Point(20, 180), new Size(300, 50));
 
             generoFeminino = new LibRadioButton("Feminino", new Point(2, 20), new Size(100, 20));
+            
 
             generoMasculino = new LibRadioButton("Maculino", new Point(120, 20), new Size(100, 20));
 
@@ -65,6 +66,7 @@ namespace Views
                 this.nome.Text = cliente.Nome;
                 this.dataNascimento.Text = cliente.DataNascimento.ToString();
                 this.cpf.Text = cliente.Cpf;
+                this.genero.Text = cliente.Genero;
                 this.diasRetorno.Text = cliente.DiasRetorno.ToString();
             }
 
@@ -98,6 +100,7 @@ namespace Views
                     this.cliente.Nome = this.nome.Text;
                     this.cliente.DataNascimento = Convert.ToDateTime(this.dataNascimento.Text);
                     this.cliente.Cpf = this.cpf.Text;
+                    this.genero.Text = cliente.Genero;
                     this.cliente.DiasRetorno = Convert.ToInt32(this.diasRetorno.Text);
                     Controller.Cliente.AtualizarClientes(this.cliente);
                 } else {
@@ -105,6 +108,7 @@ namespace Views
                         this.nome.Text,
                         this.dataNascimento.Text,
                         this.cpf.Text,
+                        this.genero.Text,
                         this.diasRetorno.Text
                     );
                 }

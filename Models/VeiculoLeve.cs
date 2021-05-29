@@ -72,5 +72,14 @@ namespace Model
                 select VeiculoLeve
             ).First();
         }
+        public static VeiculoLeve AtualizarVeiculoLeve(
+            VeiculoLeve veiculoLeve
+        )
+        {
+            Context db = new Context();
+            db.VeiculosLeves.Update(veiculoLeve);
+            db.SaveChanges();
+            return veiculoLeve;
+        }
     }
 }

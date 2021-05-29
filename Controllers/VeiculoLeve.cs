@@ -54,5 +54,11 @@ namespace Controller
 
             return Model.VeiculoLeve.GetVeiculoLeve(Id);
         }
+        public static Model.VeiculoLeve AtualizarVeiculoLeve(
+            Model.VeiculoLeve veiculoLeve
+        )
+        {
+            return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve);
+        }
     }
 }

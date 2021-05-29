@@ -28,16 +28,16 @@ namespace Views {
                 buttonCancel.DialogResult = DialogResult.Cancel;
 
                 label.SetBounds (9, 20, 372, 13);
-                comboBox.SetBounds (12, 36, 372, 20);
-                buttonOk.SetBounds (228, 72, 75, 23);
-                buttonCancel.SetBounds (309, 72, 75, 23);
+                comboBox.SetBounds (12, 45, 372, 20);
+                buttonOk.SetBounds (228, 120, 75, 23);
+                buttonCancel.SetBounds (309, 120, 75, 23);
 
                 label.AutoSize = true;
                 comboBox.Anchor = comboBox.Anchor | AnchorStyles.Right;
                 buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
                 buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 
-                form.ClientSize = new Size (396, 107);
+                form.ClientSize = new Size (400, 180);
                 form.Controls.AddRange (
                     new Control[] { label, comboBox, buttonOk, buttonCancel }
                 );

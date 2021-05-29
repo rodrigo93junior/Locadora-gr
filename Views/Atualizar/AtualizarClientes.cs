@@ -7,7 +7,7 @@ using Views.Lib;
 namespace Views
 {
     
-    public class AtualizarCliente : Form
+    public class AtualizarClientes : Form
     {
         LibTituloLabel lblTitulo;
         LibLabel lblId;
@@ -15,7 +15,7 @@ namespace Views
         LibComboBox combo;
         LibButton btnSalvarCliente;
         LibButton btnCancelar;
-        public AtualizarCliente()
+        public AtualizarClientes()
         {
             string id = "";
             IEnumerable<Model.Cliente> clientes = Controller.Cliente.ListarClientes();
@@ -30,6 +30,10 @@ namespace Views
                 listaClientes,
                 ref id
             );
+            if(!id.Equals("")) {
+                CadastrarCliente cadastrarCliente = new CadastrarCliente(id);
+                cadastrarCliente.Show();
+            }
             /*this.Text = "Alterar cadastro de Cliente";
 
             lblTitulo = new LibTituloLabel("Alterar cadastro de Cliente", new Point(180, 10), new Size(180, 40));
@@ -57,8 +61,8 @@ namespace Views
          private void botaoSalvarCliente(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show(
-                "Deseja realmente cadastrar o cliente?",
-                "Confirmar Cadastro",
+                "Deseja realmente atualizar este cliente?",
+                "Confirmar Atualização",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );

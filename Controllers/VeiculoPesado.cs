@@ -52,5 +52,11 @@ namespace Controller
 
             return Model.VeiculoPesado.GetVeiculoPesado(Id);
         }
+        public static Model.VeiculoPesado AtualizarVeiculoPesado(
+            Model.VeiculoPesado veiculoPesado
+        )
+        {
+            return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado);
+        }
     }
 }

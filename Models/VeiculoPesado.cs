@@ -75,5 +75,14 @@ namespace Model
                 select veiculoPesado
             ).First();
         }
+        public static VeiculoPesado AtualizarVeiculoPesado(
+            VeiculoPesado veiculoPesado
+        )
+        {
+            Context db = new Context();
+            db.VeiculosPesados.Update(veiculoPesado);
+            db.SaveChanges();
+            return veiculoPesado;
+        }
     }
 }
