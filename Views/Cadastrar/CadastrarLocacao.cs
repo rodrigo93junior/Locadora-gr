@@ -13,7 +13,7 @@ namespace Views
         LibLabel lblId;
         LibTextBox idCliente;
         LibLabel lblDataLocacao;
-        LibTextBox dataLocacao;
+        LibMaskedTextBox dataLocacao;
         LibGroupBox tipo;
         LibRadioButton veiculoLeve;
         LibRadioButton veiculoPesado;
@@ -35,7 +35,7 @@ namespace Views
 
             lblDataLocacao = new LibLabel("Data de Locação:", new Point(20, 80), new Size(120, 15));
 
-            dataLocacao = new LibTextBox(new Point(20, 100), new Size(300, 40));
+            dataLocacao = new LibMaskedTextBox(new Point(20, 100), new Size(90, 40), "00/00/0000");
 
             tipo = new LibGroupBox("Tipo", new Point(20, 150), new Size(300, 50));
 
@@ -118,7 +118,7 @@ namespace Views
             {
                 MessageBox.Show("Usuário Cadastrado!");
                 if (this.locacao.Id > 0) {
-                    this.locacao.IdCliente = this.idCliente.Text;
+                    this.locacao.IdCliente = Convert.ToInt32(this.idCliente.Text);
                     this.locacao.DataLocacao = Convert.ToDateTime(this.dataLocacao.Text);
                     Controller.Locacao.AtualizarLocacao(this.locacao);
                 }

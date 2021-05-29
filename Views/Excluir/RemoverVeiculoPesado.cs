@@ -6,41 +6,41 @@ using Views.Lib;
 
 namespace Views
 {
-    public class RemoverLocacao : Form
+    public class RemoverVeiculoPesado : Form
     {
         private Label lblId = new Label();       //Label cria o "nome" para as caixas de texto
 
         private LibsComboBox comboId;
-        LibButton btnEcluirLocacao;
+        LibButton btnEcluirVeiculoPesado;
         LibButton btnCancelar;
-        public RemoverLocacao()
+        public RemoverVeiculoPesado()
         {   
-            this.Text = "Remover Locacao";
+            this.Text = "Remover Veiculo Pesado";
 
-            lblId = new LibLabel("Selecione a Locação desejada para exclusão:", new Point(20, 30), new Size(250, 15));
+            lblId = new LibLabel("Selecione o Veículo desejado para exclusão:", new Point(20, 30), new Size(250, 15));
 
-            IEnumerable<Model.Locacao> locacoes;
+            IEnumerable<Model.VeiculoPesado> veiculosPesados;
             try
             {
-                locacoes = Controller.Locacao.ListarLocacoes();
+                veiculosPesados = Controller.VeiculoPesado.ListarVeiculosPesados();
             }
             catch (Exception e)
             {
                 throw e;
             }
 
-            List<string> comboLocacoes = new List<string>();
-            foreach (Model.Locacao item in locacoes)
+            List<string> comboVeiculosPesados = new List<string>();
+            foreach (Model.VeiculoPesado item in veiculosPesados)
             {
-                comboLocacoes.Add($"{item.Id} - {item.DataLocacao}");
+                comboVeiculosPesados.Add($"{item.Id} - {item.Marca} - {item.Modelo} - {item.Ano} - {item.Preco} - {item.Restricoes}");
             }
-            string[] options = comboLocacoes.ToArray();
+            string[] options = comboVeiculosPesados.ToArray();
 
             comboId = new LibsComboBox(new Point(20, 50), new Size(370, 80), options);
 
 
-            btnEcluirLocacao = new LibButton("Salvar", new Point(50, 90), new Size(100, 40));
-            btnEcluirLocacao.Click += new EventHandler(this.btnConfirmarClick);
+            btnEcluirVeiculoPesado = new LibButton("Salvar", new Point(50, 90), new Size(100, 40));
+            btnEcluirVeiculoPesado.Click += new EventHandler(this.btnConfirmarClick);
 
             btnCancelar = new LibButton("Cancelar", new Point(150, 90), new Size(100, 40));
             btnCancelar.Click += new EventHandler(this.botaoCancelar);
@@ -49,21 +49,23 @@ namespace Views
 
             this.Controls.Add(lblId);
             this.Controls.Add(comboId);
-            this.Controls.Add(btnEcluirLocacao);
+            this.Controls.Add(btnEcluirVeiculoPesado);
             this.Controls.Add(btnCancelar);
         }
 
         private void btnConfirmarClick(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("Excluir Locacao?", "Excluir Locacao", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Excluir Cliente?", "Excluir cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
                 try
                 {
-                    string comboValue = this.comboId.Text;
-                    int pos = comboValue.IndexOf("-");
-                    string locacaoId = comboValue.Substring(0, pos - 1);
-                    Controller.Locacao.RemoverLocacao(locacaoId);
+                    string comboValue = this.comboId.Text; // "1 - João"
+                    int pos = comboValue.IndexOf("-"); // 2
+                    //  01234567
+                    // "1 - João"
+                    string veiculoPesadoId = comboValue.Substring(0, pos - 1); // "1 ".Trim() === "1"
+                    Controller.VeiculoPesado.RemoverVeiculoPesado(veiculoPesadoId);
 
                 }
                 catch (Exception error)

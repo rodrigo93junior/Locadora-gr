@@ -81,5 +81,11 @@ namespace Model
             db.SaveChanges();
             return veiculoLeve;
         }
+        public static void RemoverVeiculoLeve(int Id) {
+            VeiculoLeve veiculoLeve = GetVeiculoLeve(Id);
+            Context db = new Context();
+            db.VeiculosLeves.Remove(veiculoLeve);
+            db.SaveChanges();
+        }
     }
 }

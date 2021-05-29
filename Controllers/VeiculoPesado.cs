@@ -58,5 +58,17 @@ namespace Controller
         {
             return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado);
         }
+        public static void RemoverVeiculoPesado(string StringId)
+        {
+            int Id = Convert.ToInt32(StringId);
+            try
+            {
+                Model.VeiculoPesado.RemoverVeiculoPesado(Id);
+            }
+            catch
+            {
+                throw new Exception("Não foi permitido concluir a exclusão ou ID inválido ");
+            }
+        }
     }
 }

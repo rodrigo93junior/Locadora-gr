@@ -52,5 +52,6 @@ namespace Model
         {
             return GetVeiculos(IdLocacao).Count();
         }
+        
     }
 }

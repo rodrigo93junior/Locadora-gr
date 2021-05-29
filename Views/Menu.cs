@@ -126,16 +126,19 @@ namespace Views
             btRemoverVeiculoLeve.Text = "Remover Veículo Leve";
             btRemoverVeiculoLeve.Location = new Point(300, 470);
             btRemoverVeiculoLeve.Size = new Size(200, 40);
+            btRemoverVeiculoLeve.Click += new EventHandler(this.btRemoverVeiculoLeveClick);
 
             Button btRemoverVeiculoPesado = new Button();
             btRemoverVeiculoPesado.Text = "Remover Veículo Pesado";
             btRemoverVeiculoPesado.Location = new Point(300, 520);
             btRemoverVeiculoPesado.Size = new Size(200, 40);
+            btRemoverVeiculoPesado.Click += new EventHandler(this.btRemoverVeiculoPesadoClick);
 
             Button btRemoverLocacao = new Button();
             btRemoverLocacao.Text = "Remover Locação";
             btRemoverLocacao.Location = new Point(300, 570);
             btRemoverLocacao.Size = new Size(200, 40);
+            btRemoverLocacao.Click += new EventHandler(this.btRemoverLocacaoClick);
 
 
             this.Size = new Size(600, 700);
@@ -238,6 +241,16 @@ namespace Views
         {
             RemoverLocacao removerLocaRemoverLocacao = new RemoverLocacao();
             removerLocaRemoverLocacao.Show();
+        }
+        private void btRemoverVeiculoLeveClick(object sender, EventArgs e)
+        {
+            RemoverVeiculoLeve removerVeiculoLeve = new RemoverVeiculoLeve();
+            removerVeiculoLeve.Show();
+        }
+        private void btRemoverVeiculoPesadoClick(object sender, EventArgs e)
+        {
+            RemoverVeiculoPesado removerVeiculoPesado = new RemoverVeiculoPesado();
+            removerVeiculoPesado.Show();
         }
     }
 }
