@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.Lib;
+using System.Text.RegularExpressions;
 
 namespace Views
 {
@@ -23,6 +24,7 @@ namespace Views
         LibRadioButton generoMasculino;
         LibButton btnSalvarCliente;
         LibButton btnCancelar;
+        ErrorProvider erroCpf;
         public CadastrarCliente(string id = "")
         {
             this.Text = "Cadastro de Cliente";
@@ -40,11 +42,16 @@ namespace Views
             lblCpf = new LibLabel("CPF:", new Point(20, 130), new Size(120, 15));
 
             cpf = new LibMaskedTextBox(new Point(20, 150), new Size(90, 40), "000,000,000-00");
+            cpf.Validated += new EventHandler(this.cpfValidated);
+            erroCpf = new ErrorProvider();
+            erroCpf.SetIconAlignment(this.cpf, ErrorIconAlignment.MiddleRight);
+            erroCpf.SetIconPadding(this.cpf, 2);
+            erroCpf.BlinkStyle = ErrorBlinkStyle.BlinkIfDifferentError;
 
             genero = new LibGroupBox("Genero", new Point(20, 180), new Size(300, 50));
 
             generoFeminino = new LibRadioButton("Feminino", new Point(2, 20), new Size(100, 20));
-            
+
 
             generoMasculino = new LibRadioButton("Maculino", new Point(120, 20), new Size(100, 20));
 
@@ -61,7 +68,8 @@ namespace Views
             btnCancelar = new LibButton("Cancelar", new Point(200, 300), new Size(100, 40));
             btnCancelar.Click += new EventHandler(this.botaoCancelar);
 
-            if (!id.Equals("")) {
+            if (!id.Equals(""))
+            {
                 this.cliente = Controller.Cliente.GetCliente(Convert.ToInt32(id));
                 this.nome.Text = cliente.Nome;
                 this.dataNascimento.Text = cliente.DataNascimento.ToString();
@@ -96,14 +104,17 @@ namespace Views
             if (resultado == System.Windows.Forms.DialogResult.Yes)
             {
                 MessageBox.Show("Usuário Cadastrado!");
-                if (this.cliente.Id > 0) {
+                if (this.cliente.Id > 0)
+                {
                     this.cliente.Nome = this.nome.Text;
                     this.cliente.DataNascimento = Convert.ToDateTime(this.dataNascimento.Text);
                     this.cliente.Cpf = this.cpf.Text;
                     this.genero.Text = cliente.Genero;
                     this.cliente.DiasRetorno = Convert.ToInt32(this.diasRetorno.Text);
                     Controller.Cliente.AtualizarClientes(this.cliente);
-                } else {
+                }
+                else
+                {
                     Controller.Cliente.NovoCliente(
                         this.nome.Text,
                         this.dataNascimento.Text,
@@ -141,6 +152,16 @@ namespace Views
             }
 
             this.Close();
+        }
+        private void cpfValidated(object sender, EventArgs e) {
+             Regex rgx = new Regex("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
+            if (!rgx.IsMatch(this.cpf.Text))
+            {
+                this.erroCpf.SetError(this.cpf, "CPF INVALIDO!");
+            }else{
+                this.erroCpf.SetError(this.cpf, String.Empty);
+            }
+
         }
     }
 }
