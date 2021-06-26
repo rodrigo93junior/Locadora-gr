@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Documents\\Locadora-gr\\Senac.csproj": {}
+    "C:\\Users\\User\\Documents\\Projeto\\Locadora-gr\\Senac.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Documents\\Locadora-gr\\Senac.csproj": {
+    "C:\\Users\\User\\Documents\\Projeto\\Locadora-gr\\Senac.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Documents\\Locadora-gr\\Senac.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\Projeto\\Locadora-gr\\Senac.csproj",
         "projectName": "Senac",
-        "projectPath": "C:\\Users\\User\\Documents\\Locadora-gr\\Senac.csproj",
+        "projectPath": "C:\\Users\\User\\Documents\\Projeto\\Locadora-gr\\Senac.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Documents\\Locadora-gr\\obj\\",
+        "outputPath": "C:\\Users\\User\\Documents\\Projeto\\Locadora-gr\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"

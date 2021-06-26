@@ -149,5 +149,48 @@ namespace Model
             return query.First();
 
         }
+        public bool VerificaNome(string pNome){
+            if(String.IsNullOrEmpty(pNome)){
+                return false;
+            } else {
+                return true;
+            }
+        }
+        public bool VerificaDataNascimento(string pDataNascimento){
+            if(Convert.ToDateTime(pDataNascimento) == null){
+                return false;
+            } else {
+                return true;
+            }
+        }
+        public bool VerificaDataNascimento2(string pDataNascimento){
+            if(Convert.ToDateTime(pDataNascimento) > DateTime.Now){
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        public bool VerificaCpf(string pCpf){
+            if(String.IsNullOrEmpty(pCpf)){
+                return false;
+            } else {
+                return true;
+            }
+        }
+        public bool VerificaGenero(string pGenero){
+            if(String.IsNullOrEmpty(pGenero)){
+                return false;
+            } else {
+                return true;
+            }
+        }
+        public bool VerificaDiasRetorno(string pDiasRetorno){
+            if(String.IsNullOrEmpty(pDiasRetorno)){
+                return false;
+            } else {
+                return true;
+            }
+        }
     }
 }
